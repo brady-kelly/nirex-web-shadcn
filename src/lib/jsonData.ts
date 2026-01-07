@@ -2,10 +2,13 @@ import { promises as fs } from "node:fs";
 
 import type { ProductGridProps } from "@/components/product/productGrid";
 import type { Product, ProductCategory } from "./types/product";
+import { formatCurrency } from "./formatting";
 
 function getImageSrcPath(imageFilename?: string): string {
   return `/products/${imageFilename || "generic-printer.jpg"}`;
 }
+
+const formatter = new Intl.NumberFormat("en-US");
 
 export async function getProductGridProps(): Promise<ProductGridProps> {
   const demoProps: ProductGridProps = { items: [] };
@@ -26,7 +29,7 @@ export async function getProductGridProps(): Promise<ProductGridProps> {
       src: getImageSrcPath(product.imageSrc) || "",
       alt: "product image",
     },
-    localPrice: product.localPrice,
+    localPrice: formatCurrency(parseFloat(product.localPrice), "ZAR"),
   }));
 
   return demoProps;

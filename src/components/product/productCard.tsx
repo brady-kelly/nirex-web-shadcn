@@ -86,6 +86,10 @@ export function ProductCard({
                     </p>
                 )}
 
+                <p className="text-sm mb-1">
+                    <span className="font-medium">{localPrice}</span>
+                </p>
+
                 {features && features.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                         {features.map((feature) => (
