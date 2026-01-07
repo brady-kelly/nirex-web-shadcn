@@ -39,13 +39,12 @@ export function ProductCard({
         >
             {/* Card Media */}
             {image && (
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="relative w-80 h-80 overflow-hidden">
                     <Image
+                        fill
                         src={image.src}
                         alt={image.alt}
-                        width={800}
-                        height={500}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover/usecase4:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover/usecase4:scale-105"
                     />
                 </div>
             )}
@@ -64,7 +63,7 @@ export function ProductCard({
                     )}
                 </div>
 
-                <div className=" h-28 min-h-28">
+                <div className=" h-22 min-h-22">
                     {workingSize && workingSize.length > 0 && (
                         <p className="text-xs text-muted-foreground mb-1">
                             <span className="font-medium">Working Size:</span> {workingSize}

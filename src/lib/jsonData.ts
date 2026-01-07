@@ -11,16 +11,17 @@ function getImageSrcPath(imageFilename?: string): string {
 export async function loadAllProductCategories(): Promise<ProductCategory[]> {
   const json = await fs.readFile("data/products.json", "utf-8");
   const cats = JSON.parse(json) as ProductCategory[];
-  cats.forEach((c) => {
-    c.id = c.id || crypto.randomUUID();
-  });
   return cats;
 }
 
 export async function getProductGridProps(
   category: ProductCategory
 ): Promise<ProductGridProps> {
-  const demoProps: ProductGridProps = { items: [] };
+  const demoProps: ProductGridProps = {
+    id: crypto.randomUUID(),
+    heading: category.heading,
+    items: [],
+  };
 
   const prods = category.products || [];
 

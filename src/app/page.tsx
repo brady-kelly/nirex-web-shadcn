@@ -4,7 +4,7 @@ import { getProductGridProps, loadAllProductCategories } from "@/lib/jsonData";
 export default async function Home() {
 
   const categories = await loadAllProductCategories();
-  const prodPromise = await categories.map(async category => await getProductGridProps(category));
+  const prodPromise = categories.map(async category => await getProductGridProps(category));
   const prods = await Promise.all(prodPromise);
 
   return (
