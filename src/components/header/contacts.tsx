@@ -24,7 +24,7 @@ export default function ContactsBar() {
 
     return (
         //const phone: string = details.phone.value;
-        <div className="navbar bg-red-600 text-white shadow-sm max-h-8 w-full flex justify-between overflow-hidden">
+        <div className="navbar w-full flex justify-between overflow-hidden">
             <div id="office-comms" className="flex gap-1.5">
                 {phone && phone.length > 0 &&
                     <Item size="sm">
@@ -36,7 +36,7 @@ export default function ContactsBar() {
                             title="Link for Contact Phone"
                         >
                             <ItemContent>
-                                <ItemDescription className="text-white!">{phone}</ItemDescription>
+                                <ItemDescription >{phone}</ItemDescription>
                             </ItemContent>
                         </a>
                     </Item>
@@ -51,7 +51,7 @@ export default function ContactsBar() {
                             title="Link for Contact Email"
                         >
                             <ItemContent>
-                                <ItemDescription className="text-white!">{email}</ItemDescription>
+                                <ItemDescription >{email}</ItemDescription>
                             </ItemContent>
                         </a>
                     </Item>
@@ -63,7 +63,7 @@ export default function ContactsBar() {
                         </ItemActions>
                         <a href={addressUrl} title="Maps Link for Contact Address">
                             <ItemContent>
-                                <ItemDescription className="text-white!">{address}</ItemDescription>
+                                <ItemDescription >{address}</ItemDescription>
                             </ItemContent>
                         </a>
                     </Item>
