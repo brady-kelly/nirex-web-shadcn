@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ProductCard, type ProductCardProps } from "./productCard";
 export interface ProductGridProps {
+    id: string
     badge?: {
         label: string;
         variant?: "default" | "secondary" | "outline";
@@ -35,7 +36,7 @@ export function ProductGrid({
     };
 
     return (
-        <section className={cn("py-16 md:py-24", className)}>
+        <section className={cn("py-2.5 md:py-5", className)}>
             <div className="mx-auto max-w-6xl px-4 md:px-6">
                 {/* Header */}
                 <div className="text-center mb-12">

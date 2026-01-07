@@ -1,21 +1,28 @@
 import { promises as fs } from "node:fs";
 
 import type { ProductGridProps } from "@/components/product/productGrid";
-import type { Product, ProductCategory } from "./types/product";
 import { formatCurrency } from "./formatting";
+import type { Product, ProductCategory } from "./types/product";
 
 function getImageSrcPath(imageFilename?: string): string {
   return `/products/${imageFilename || "generic-printer.jpg"}`;
 }
 
-const formatter = new Intl.NumberFormat("en-US");
-
-export async function getProductGridProps(): Promise<ProductGridProps> {
-  const demoProps: ProductGridProps = { items: [] };
-
+export async function loadAllProductCategories(): Promise<ProductCategory[]> {
   const json = await fs.readFile("data/products.json", "utf-8");
   const cats = JSON.parse(json) as ProductCategory[];
-  const prods = cats[0].products || [];
+  cats.forEach((c) => {
+    c.id = c.id || crypto.randomUUID();
+  });
+  return cats;
+}
+
+export async function getProductGridProps(
+  category: ProductCategory
+): Promise<ProductGridProps> {
+  const demoProps: ProductGridProps = { items: [] };
+
+  const prods = category.products || [];
 
   demoProps.items = prods.map((product) => ({
     id: crypto.randomUUID(),
