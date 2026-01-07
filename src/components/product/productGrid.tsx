@@ -1,36 +1,8 @@
 "use client";
 
-import {
-    Building,
-    Check,
-    Cloud,
-    GraduationCap,
-    HeartPulse,
-    Landmark,
-    ShoppingCart,
-} from "lucide-react";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { ProductCard } from "./productCard";
-
-export interface ProductFeature {
-    id: string;
-    text: string;
-}
-
-interface ProductCardProps {
-    id: string;
-    icon?: React.ReactNode;
-    title: string;
-    description: string;
-    image?: {
-        src: string;
-        alt: string;
-    };
-    features?: ProductFeature[];
-}
-
+import { ProductCard, type ProductCardProps } from "./productCard";
 export interface ProductGridProps {
     badge?: {
         label: string;

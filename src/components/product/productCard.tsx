@@ -1,20 +1,10 @@
-import {
-    Building,
-    Check,
-    Cloud,
-    GraduationCap,
-    HeartPulse,
-    Landmark,
-    ShoppingCart,
-} from "lucide-react";
+"use client";
 
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import type { ProductFeature } from "@/lib/types/product";
+import { Check } from "lucide-react";
 
-import { ProductFeature } from "./productGrid";
-
-interface ProductCardProps {
+export interface ProductCardProps {
     id: string;
     icon?: React.ReactNode;
     title: string;
@@ -26,7 +16,7 @@ interface ProductCardProps {
     features?: ProductFeature[];
 }
 
-export function ProductCard({ id, image, icon, title, description, features }: ProductCardProps) {
+export function ProductCard({ id, image, title, description, features }: ProductCardProps) {
     return (
         <div
             key={id}
@@ -48,12 +38,7 @@ export function ProductCard({ id, image, icon, title, description, features }: P
             {/* Card Content */}
             <div className="p-5">
                 <div className="flex items-center gap-3 mb-3">
-                    {icon && (
-                        <span className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-primary/10 text-primary group-hover/usecase4:bg-primary group-hover/usecase4:text-background">
-                            {icon}
-                        </span>
-                    )}
-                    <h3 className="text-lg font-semibold">{title}</h3>
+                    <h4 className="text-lg font-semibold">{title}</h4>
                 </div>
 
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
