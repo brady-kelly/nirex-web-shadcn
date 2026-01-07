@@ -28,11 +28,11 @@ export function ProductGrid({
         // TODO: Revise this Shirt.
         switch (columns) {
             case 2:
-                return "grid md:grid-cols-2";
+                return "grid grid-cols-2";
             case 4:
-                return "grid sm:grid-cols-2 lg:grid-cols-4";
+                return "grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3";
             default:
-                return "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3";
+                return "grid grid-cols-3 sm:grid-cols-2";
         }
     };
 
@@ -63,7 +63,7 @@ export function ProductGrid({
                 </div>
 
                 {/* Grid Cards */}
-                <div className={cn("gap-6", getColumnClasses())}>
+                <div className="grid grid-cols-3 gap-6">
                     {items.map((item) => (
                         <ProductCard key={item.id} {...item} />
                     ))}
