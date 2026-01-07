@@ -1,0 +1,121 @@
+import { Mail, MapPin, Smartphone } from "lucide-react";
+import { find } from "es-toolkit/compat";
+import Image from "next/image";
+import {
+    Item,
+    ItemActions,
+    ItemContent,
+    ItemDescription,
+    ItemMedia,
+} from "../ui/item";
+import { SiteContactDetails } from "../../../data/siteConfig";
+
+export default function ContactsBar() {
+    const contacts = SiteContactDetails;
+    const details = SiteContactDetails[0];
+    const addressUrl = find(details, { name: "mapsUrl" })?.value;
+
+    const phone = find(contacts, { name: "phone" })?.value;
+    const email = find(contacts, { name: "email" })?.value;
+    const address = find(contacts, { name: "address" })?.value;
+    const facebook = find(contacts, { name: "facebook" })?.value;
+    const youtube = find(contacts, { name: "youtube" })?.value;
+    const instagram = find(contacts, { name: "instagram" })?.value;
+
+    return (
+        //const phone: string = details.phone.value;
+        <div className="navbar bg-red-600 text-white shadow-sm max-h-8 w-full flex justify-between overflow-hidden">
+            <div id="office-comms" className="flex gap-1.5">
+                {phone && phone.length > 0 &&
+                    <Item size="sm">
+                        <ItemActions>
+                            <Smartphone />
+                        </ItemActions>
+                        <a
+                            href={`tel:${phone}`}
+                            title="Link for Contact Phone"
+                        >
+                            <ItemContent>
+                                <ItemDescription className="text-white!">{phone}</ItemDescription>
+                            </ItemContent>
+                        </a>
+                    </Item>
+                }
+                {email && email.length > 0 &&
+                    <Item size="sm">
+                        <ItemActions>
+                            <Mail />
+                        </ItemActions>
+                        <a
+                            href={`mailto:${email}`}
+                            title="Link for Contact Email"
+                        >
+                            <ItemContent>
+                                <ItemDescription className="text-white!">{email}</ItemDescription>
+                            </ItemContent>
+                        </a>
+                    </Item>
+                }
+                {address && address.length > 0 &&
+                    <Item size="sm">
+                        <ItemActions>
+                            <MapPin />
+                        </ItemActions>
+                        <a href={addressUrl} title="Maps Link for Contact Address">
+                            <ItemContent>
+                                <ItemDescription className="text-white!">{address}</ItemDescription>
+                            </ItemContent>
+                        </a>
+                    </Item>
+                }
+            </div>
+            <div id="social-media" className="flex gap-1.5 max-h-10">
+                {facebook && facebook.length > 0 &&
+                    <Item size="sm">
+                        <ItemMedia>
+                            <a href={facebook} title="Facebook Link">
+                                <Image
+                                    src="/icons/facebook.png"
+                                    alt="Facebook Logo"
+                                    width={24}
+                                    height={24}
+                                    className="aspect-square w-full object-cover"
+                                ></Image>
+                            </a>
+                        </ItemMedia>
+                    </Item>
+                }
+                {youtube && youtube.length > 0 &&
+                    <Item size="sm">
+                        <ItemMedia>
+                            <a href={youtube} title="Youtube Link">
+                                <Image
+                                    src="/icons/youtube.png"
+                                    alt="Youtube Logo"
+                                    width={24}
+                                    height={24}
+                                    className="aspect-square w-full object-cover"
+                                />
+                            </a>
+                        </ItemMedia>
+                    </Item>
+                }
+                {instagram && instagram.length > 0 &&
+                    < Item size="sm">
+                        <ItemMedia>
+                            <a href={instagram} title="Instagram Link">
+                                <Image
+                                    src="/icons/instagram.png"
+                                    alt="Instagram Logo"
+                                    width={24}
+                                    height={24}
+                                    className="aspect-square w-full object-cover"
+                                />
+                            </a>
+                        </ItemMedia>
+                    </Item>
+                }
+            </div>
+        </div >
+    );
+}
