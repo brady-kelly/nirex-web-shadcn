@@ -15,11 +15,13 @@ export async function loadAllProductCategories(): Promise<ProductCategory[]> {
 }
 
 export async function getProductGridProps(
-  category: ProductCategory
+  category: ProductCategory,
+  cols: 2 | 3 | 4
 ): Promise<ProductGridProps> {
   const demoProps: ProductGridProps = {
     id: crypto.randomUUID(),
     heading: category.heading,
+    columns: cols,
     items: [],
   };
 

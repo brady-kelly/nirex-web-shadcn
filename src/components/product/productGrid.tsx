@@ -13,7 +13,7 @@ export interface ProductGridProps {
     heading?: string;
     description?: string;
     items: ProductCardProps[];
-    columns?: 2 | 3 | 4;
+    columns: 2 | 3 | 4;
     className?: string;
 }
 
@@ -25,13 +25,14 @@ export function ProductGrid({
     columns = 3
 }: ProductGridProps) {
     const getColumnClasses = () => {
+        // TODO: Revise this Shirt.
         switch (columns) {
             case 2:
                 return "grid md:grid-cols-2";
             case 4:
                 return "grid sm:grid-cols-2 lg:grid-cols-4";
             default:
-                return "grid sm:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4";
+                return "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3";
         }
     };
 
@@ -39,7 +40,7 @@ export function ProductGrid({
         <section>
             <div className="mx-auto px-4 md:px-6">
                 {/* Header */}
-                <div className="text-center mb-12">
+                <div className="my-6">
                     {badge?.label && (
                         <div className="mb-6 flex justify-center">
                             <Badge variant={badge.variant ?? "secondary"}>
@@ -47,16 +48,18 @@ export function ProductGrid({
                             </Badge>
                         </div>
                     )}
-                    {heading && (
-                        <h2 className="text-2xl md:text-4xl font-semibold text-balance max-w-4xl mx-auto">
-                            {heading}
-                        </h2>
-                    )}
-                    {description && (
-                        <p className="mt-4 text-base sm:text-lg text-muted-foreground text-balance max-w-3xl mx-auto">
-                            {description}
-                        </p>
-                    )}
+                    <div className="ml-3">
+                        {heading && (
+                            <h2 className="ml-3 text-2xl md:text-4xl font-semibold text-balance max-w-4xl">
+                                {heading}
+                            </h2>
+                        )}
+                        {description && (
+                            <p className="ml-3 mt-4 text-base sm:text-lg text-muted-foreground text-balance max-w-3x">
+                                {description}
+                            </p>
+                        )}
+                    </div>
                 </div>
 
                 {/* Grid Cards */}

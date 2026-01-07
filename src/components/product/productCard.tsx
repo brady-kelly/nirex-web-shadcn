@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 export interface ProductCardProps {
     id: string;
@@ -47,11 +48,18 @@ export function ProductCard({
                         className="object-contain transition-transform duration-500 group-hover/usecase4:scale-105"
                     />
                 </AspectRatio>
-                <p>Card Content</p>
+                <div className="my-6 h-10 text-sm">
+                    <p className="mb-1">{heading}</p>
+                    {subHeading && <p>{subHeading}</p>}
+                </div>
+                <div className="ml-3">
+                    {localPrice}
+                </div>
+                <br />
+                <div>
+                    <Button variant="outline" size="sm">ADD TO CART</Button>
+                </div>
             </CardContent>
-            <CardFooter>
-                <p>Card Footer</p>
-            </CardFooter>
         </Card>
     );
 }
