@@ -1,0 +1,111 @@
+[
+  {
+    "heading": "Roller Heat Press Machines",
+    "products": [
+      {
+        "heading": "Roller heat press machine",
+        "subHeading": "1.8m",
+        "workingSize": "≦ 1.8m",
+        "packageSize": "246 x 75 x 138",
+        "volume": "2.9",
+        "packageWeight": "380",
+        "localPrice": "90000",
+        "imageSrc": "Roller-heat-press-machine-1-8m.jpg"
+      },
+      {
+        "code": "x1",
+        "heading": "3.2meter (Diameter 42cm) oil type roller heat",
+        "workingSize": "42 x 320",
+        "packageSize": "440 x 130 x 160",
+        "packageWeight": "3650",
+        "localPrice": "415000",
+        "imageSrc": "3-2meter-Diameter 42cm-oil-type-roller-heat.jpg"
+      },
+      {
+        "heading": "Roller heat press machine",
+        "subHeading": "1.6m",
+        "workingSize": "≦ 1.6m",
+        "packageSize": "225 x 67 x 134",
+        "volume": "2.1",
+        "packageWeight": "300",
+        "localPrice": "415000",
+        "imageSrc": "Roller-heat-press-machine-1-6m.jpg"
+      },
+      {
+        "heading": "3.2meter (Diameter 60cm) oil type roller heat oil type roller heat",
+        "workingSize": "60 x 320",
+        "packageSize": "440 x 143 x 160",
+        "packageWeight": "4000",
+        "localPrice": "485000",
+        "imageSrc": "3-2meter-Diameter 60cm-oil-type-roller-heat.jpg"
+      },
+      {
+        "heading": "2.6meter (Diameter 60cm) oil type roller heat",
+        "workingSize": "60 x 260",
+        "packageSize": "382 x 132 x 183",
+        "packageWeight": "3280",
+        "localPrice": "390000",
+        "imageSrc": "2-6meter-Diameter-60cm-oil-type-roller-heat.jpg"
+      }
+    ]
+  },
+  {
+    "heading": "Heat Press Manual",
+    "products": [
+      {
+        "heading": "Heat press machine",
+        "subHeading": "38 x 38cm (Manual) 8 in 1",
+        "packageSize": "73 x 49 x 38.5",
+        "volume": "0.14",
+        "packageWeight": "21",
+        "localPrice": "7500",
+        "imageSrc": "Heat press machine.jpg"
+      },
+      {
+        "heading": "6040 Heat press",
+        "subHeading": "60 x 40cm (Manual)",
+        "packageSize": "79 x 70 x 44",
+        "volume": "0.24",
+        "packageWeight": "40",
+        "localPrice": "415000",
+        "imageSrc": "6040 Heat press.jpg"
+      },
+      {
+        "heading": "1080 Heat press machine",
+        "subHeading": "100 x 80cm (Manual)",
+        "packageSize": "133 x 108 x 70",
+        "volume": "1.1",
+        "packageWeight": "240",
+        "localPrice": "415000",
+        "imageSrc": "1080 Heat press machine.jpg"
+      },
+      {
+        "heading": "Heat press machine",
+        "subHeading": "100 x 80cm (Pneumatic)",
+        "packageSize": "",
+        "volume": "1.1",
+        "packageWeight": "600",
+        "localPrice": "79000",
+        "imageSrc": "Heat press machine-2.jpg"
+      },
+      {
+        "heading": "Heat press machine",
+        "subHeading": "100 x 120cm (Pneumatic)",
+        "packageSize": "",
+        "volume": "1.1",
+        "packageWeight": "600",
+        "localPrice": "89000",
+        "imageSrc": "Heat press machine-3.jpg"
+      },
+      {
+        "heading": "LC manual laminator",
+        "maxLaminationWidth": "1.6",
+        "packageSize": "203 x 65 x 48",
+        "volume": "0.63",
+        "packageWeight": "120",
+        "localPrice": "89000",
+        "imageSrc": "LC manual laminator.jpg"
+      }
+    ]
+  }
+]

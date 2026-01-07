@@ -4,11 +4,20 @@ import Image from "next/image";
 import type { ProductFeature } from "@/lib/types/product";
 import { Check } from "lucide-react";
 
+function getImageSrcPath(imageFilename: string): string {
+    return `products/${imageFilename}`;
+}
+
 export interface ProductCardProps {
     id: string;
     icon?: React.ReactNode;
-    title: string;
-    description: string;
+    heading: string;
+    subHeading: string;
+    workingSize?: string;
+    packageSize?: string;
+    volume?: string;
+    packageWeight?: string;
+    localPrice: string;
     image?: {
         src: string;
         alt: string;
@@ -16,7 +25,17 @@ export interface ProductCardProps {
     features?: ProductFeature[];
 }
 
-export function ProductCard({ id, image, title, description, features }: ProductCardProps) {
+export function ProductCard({
+    id,
+    image,
+    heading,
+    subHeading,
+    workingSize,
+    packageSize,
+    volume,
+    packageWeight,
+    localPrice,
+    features }: ProductCardProps) {
     return (
         <div
             key={id}
@@ -38,12 +57,44 @@ export function ProductCard({ id, image, title, description, features }: Product
             {/* Card Content */}
             <div className="p-5">
                 <div className="flex items-center gap-3 mb-3">
-                    <h4 className="text-lg font-semibold">{title}</h4>
+                    <h4 className="text-lg font-semibold">{heading}</h4>
                 </div>
 
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                    {description}
-                </p>
+                {subHeading && subHeading.length > 0 && (
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                        {subHeading}
+                    </p>
+                )}
+
+                {subHeading && subHeading.length > 0 && (
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                        {subHeading}
+                    </p>
+                )}
+
+                {workingSize && workingSize.length > 0 && (
+                    <p className="text-sm text-foreground/80 mb-1">
+                        <span className="font-medium">Working Size:</span> {workingSize}
+                    </p>
+                )}
+
+                {packageSize && packageSize.length > 0 && (
+                    <p className="text-sm text-foreground/80 mb-1">
+                        <span className="font-medium">Package Size:</span> {packageSize}
+                    </p>
+                )}
+
+                {volume && volume.length > 0 && (
+                    <p className="text-sm text-foreground/80 mb-1">
+                        <span className="font-medium">Volume:</span> {volume}
+                    </p>
+                )}
+
+                {packageWeight && packageWeight.length > 0 && (
+                    <p className="text-sm text-foreground/80 mb-1">
+                        <span className="font-medium">Package Weight:</span> {packageWeight}
+                    </p>
+                )}
 
                 {features && features.length > 0 && (
                     <div className="flex flex-wrap gap-2">
