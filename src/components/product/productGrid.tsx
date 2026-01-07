@@ -2,7 +2,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { ProductCard, type ProductCardProps } from "./productCard";
+import { ProductCardOld, type ProductCardPropsOld } from "./productCardOld";
+import { ProductCard, ProductCardProps } from "./productCard";
 export interface ProductGridProps {
     id: string
     badge?: {
@@ -21,23 +22,22 @@ export function ProductGrid({
     heading,
     description,
     items,
-    columns = 3,
-    className,
+    columns = 3
 }: ProductGridProps) {
     const getColumnClasses = () => {
         switch (columns) {
             case 2:
-                return "md:grid-cols-2";
+                return "grid md:grid-cols-2";
             case 4:
-                return "sm:grid-cols-2 lg:grid-cols-4";
+                return "grid sm:grid-cols-2 lg:grid-cols-4";
             default:
-                return "sm:grid-cols-2 lg:grid-cols-3";
+                return "grid sm:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4";
         }
     };
 
     return (
-        <section className={cn("py-2.5 md:py-5", className)}>
-            <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <section>
+            <div className="mx-auto px-4 md:px-6">
                 {/* Header */}
                 <div className="text-center mb-12">
                     {badge?.label && (
@@ -60,7 +60,7 @@ export function ProductGrid({
                 </div>
 
                 {/* Grid Cards */}
-                <div className={cn("grid gap-6", getColumnClasses())}>
+                <div className={cn("gap-6", getColumnClasses())}>
                     {items.map((item) => (
                         <ProductCard key={item.id} {...item} />
                     ))}
