@@ -52,39 +52,43 @@ export function ProductCard({
 
             {/* Card Content */}
             <div className="p-5">
-                <div className="flex items-center gap-3 mb-3">
-                    <p className="text-sm font-semibold">{heading}</p>
+                <div className="h-16 min-h16 mb-2.5 ">
+                    <div className="flex items-start gap-3 mb-3">
+                        <p className="text-sm font-semibold">{heading}</p>
+                    </div>
+
+                    {subHeading && subHeading.length > 0 && (
+                        <p className="text-sm mb-4 line-clamp-2">
+                            {subHeading}
+                        </p>
+                    )}
                 </div>
 
-                {subHeading && subHeading.length > 0 && (
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        {subHeading}
-                    </p>
-                )}
+                <div className=" h-28 min-h-28">
+                    {workingSize && workingSize.length > 0 && (
+                        <p className="text-xs text-muted-foreground mb-1">
+                            <span className="font-medium">Working Size:</span> {workingSize}
+                        </p>
+                    )}
 
-                {workingSize && workingSize.length > 0 && (
-                    <p className="text-xs text-muted-foreground mb-1">
-                        <span className="font-medium">Working Size:</span> {workingSize}
-                    </p>
-                )}
+                    {packageSize && packageSize.length > 0 && (
+                        <p className="text-xs text-muted-foreground mb-1">
+                            <span className="font-medium">Package Size:</span> {packageSize}
+                        </p>
+                    )}
 
-                {packageSize && packageSize.length > 0 && (
-                    <p className="text-xs text-muted-foreground mb-1">
-                        <span className="font-medium">Package Size:</span> {packageSize}
-                    </p>
-                )}
+                    {volume && volume.length > 0 && (
+                        <p className="text-xs text-muted-foreground mb-1">
+                            <span className="font-medium">Volume:</span> {volume}
+                        </p>
+                    )}
 
-                {volume && volume.length > 0 && (
-                    <p className="text-xs text-muted-foreground mb-1">
-                        <span className="font-medium">Volume:</span> {volume}
-                    </p>
-                )}
-
-                {packageWeight && packageWeight.length > 0 && (
-                    <p className="text-xs text-muted-foreground mb-1">
-                        <span className="font-medium">Package Weight:</span> {packageWeight}
-                    </p>
-                )}
+                    {packageWeight && packageWeight.length > 0 && (
+                        <p className="text-xs text-muted-foreground mb-1">
+                            <span className="font-medium">Package Weight:</span> {packageWeight}
+                        </p>
+                    )}
+                </div>
 
                 <p className="text-sm mb-1">
                     <span className="font-medium">{localPrice}</span>
