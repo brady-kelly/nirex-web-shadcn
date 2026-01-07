@@ -3,6 +3,12 @@ export interface ProductFeature {
   text: string;
 }
 
+export interface ProductCategory {
+  id?: string;
+  heading: string;
+  products?: Product[];
+}
+
 export interface Product {
   id: string;
   heading: string;

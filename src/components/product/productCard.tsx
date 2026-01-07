@@ -4,10 +4,6 @@ import Image from "next/image";
 import type { ProductFeature } from "@/lib/types/product";
 import { Check } from "lucide-react";
 
-function getImageSrcPath(imageFilename: string): string {
-    return `products/${imageFilename}`;
-}
-
 export interface ProductCardProps {
     id: string;
     icon?: React.ReactNode;
@@ -57,7 +53,7 @@ export function ProductCard({
             {/* Card Content */}
             <div className="p-5">
                 <div className="flex items-center gap-3 mb-3">
-                    <h4 className="text-lg font-semibold">{heading}</h4>
+                    <p className="text-sm font-semibold">{heading}</p>
                 </div>
 
                 {subHeading && subHeading.length > 0 && (
@@ -66,32 +62,26 @@ export function ProductCard({
                     </p>
                 )}
 
-                {subHeading && subHeading.length > 0 && (
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        {subHeading}
-                    </p>
-                )}
-
                 {workingSize && workingSize.length > 0 && (
-                    <p className="text-sm text-foreground/80 mb-1">
+                    <p className="text-xs text-muted-foreground mb-1">
                         <span className="font-medium">Working Size:</span> {workingSize}
                     </p>
                 )}
 
                 {packageSize && packageSize.length > 0 && (
-                    <p className="text-sm text-foreground/80 mb-1">
+                    <p className="text-xs text-muted-foreground mb-1">
                         <span className="font-medium">Package Size:</span> {packageSize}
                     </p>
                 )}
 
                 {volume && volume.length > 0 && (
-                    <p className="text-sm text-foreground/80 mb-1">
+                    <p className="text-xs text-muted-foreground mb-1">
                         <span className="font-medium">Volume:</span> {volume}
                     </p>
                 )}
 
                 {packageWeight && packageWeight.length > 0 && (
-                    <p className="text-sm text-foreground/80 mb-1">
+                    <p className="text-xs text-muted-foreground mb-1">
                         <span className="font-medium">Package Weight:</span> {packageWeight}
                     </p>
                 )}
