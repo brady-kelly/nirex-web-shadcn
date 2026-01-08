@@ -10,6 +10,12 @@
     "format": "biome format --write"
   },
   "dependencies": {
+<<<<<<< Updated upstream
+=======
+    "@heroicons/react": "^2.2.0",
+    "@prisma/adapter-pg": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+>>>>>>> Stashed changes
     "@radix-ui/react-aspect-ratio": "^1.1.8",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-separator": "^1.1.8",

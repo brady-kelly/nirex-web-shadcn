@@ -1,0 +1,1 @@
+docker run -d --name local-pg -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=eNyRFrfr9Tdr7l -e POSTGRES_DB=nirex-tech -p 5432:5432 --mount type=volume,source=nirex_pg_data,destination=/var/lib/postgresql postgres
