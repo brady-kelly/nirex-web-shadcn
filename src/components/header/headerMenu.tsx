@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/complexity/useOptionalChain: <explanation> */
+/** biome-ignore-all lint/complexity/useOptionalChain:  */
 "use client"
 
 import * as React from "react"

@@ -1,5 +1,5 @@
-/** biome-ignore-all lint/a11y/useButtonType: <explanation> */
-/** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
+/** biome-ignore-all lint/a11y/useButtonType:  */
+/** biome-ignore-all lint/a11y/useSemanticElements:  */
 
 "use client";
 

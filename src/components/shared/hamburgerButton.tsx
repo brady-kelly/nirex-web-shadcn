@@ -1,5 +1,5 @@
-/** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
-/** biome-ignore-all lint/a11y/noSvgWithoutTitle: <explanation> */
+/** biome-ignore-all lint/a11y/useSemanticElements:  */
+/** biome-ignore-all lint/a11y/noSvgWithoutTitle:  */
 export default function HamburgerButton() {
     return (
         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

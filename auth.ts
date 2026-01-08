@@ -1,12 +1,14 @@
-/** biome-ignore-all assist/source/organizeImports: <explanation> */
-import NextAuth from "next-auth";
+/** biome-ignore-all assist/source/organizeImports:  */
+/** biome-ignore-all lint/correctness/noUnusedImports:  */
+/** biome-ignore-all lint/style/useImportType:  */
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
-import type { User } from "./app/generated/prisma/client";
 import { use } from "react";
+import { User } from "./generated/prisma/client";
+import NextAuth from "next-auth";
 
 async function getUser(email: string): Promise<User | null> {
   try {
@@ -35,15 +37,13 @@ export const { auth, signIn, signOut } = NextAuth({
           if (!user) return null;
           const passwordsMatch = await bcrypt.compare(password, user.pwd);
           if (passwordsMatch)
-            // TODO: Why can't I just return user directly?
-            //return user;
             return {
               id: user.id.toString(),
               email: user.email,
               name: user.name,
             };
         }
-        console.log("Invalid credentials");
+
         return null;
       },
     }),

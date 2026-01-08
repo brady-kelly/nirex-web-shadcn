@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
+/** biome-ignore-all lint/a11y/useSemanticElements:  */
 import { setSearchFormVisibility } from "@/lib/search";
 import { useRef } from "react";
 import { Button } from "../ui/button";

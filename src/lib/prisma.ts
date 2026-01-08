@@ -1,6 +1,6 @@
-/** biome-ignore-all assist/source/organizeImports: <explanation> */
+/** biome-ignore-all assist/source/organizeImports:  */
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../../app/generated/prisma/client";
+import { PrismaClient } from "../../generated/prisma/client";
 
 const globalForPrisma = global as unknown as {
   prisma: PrismaClient;
