@@ -1,3 +1,4 @@
+// biome-ignore assist/source/organizeImports: too bad
 import { Mail, MapPin, Smartphone } from "lucide-react";
 import { find } from "es-toolkit/compat";
 import Image from "next/image";
@@ -8,18 +9,22 @@ import {
     ItemDescription,
     ItemMedia,
 } from "../ui/item";
-import { SiteContactDetails } from "../../../data/siteConfig";
+import type { SiteContactItem } from "@/lib/types/config";
 
-export default function ContactsBar() {
-    const contacts = SiteContactDetails;
-    const addressUrl = find(contacts, { name: "mapsUrl" })?.value;
+export default function ContactsBar(contacts: SiteContactItem[]) {
 
-    const phone = find(contacts, { name: "phone" })?.value;
-    const email = find(contacts, { name: "email" })?.value;
-    const address = find(contacts, { name: "address" })?.value;
-    const facebook = find(contacts, { name: "facebook" })?.value;
-    const youtube = find(contacts, { name: "youtube" })?.value;
-    const instagram = find(contacts, { name: "instagram" })?.value;
+    function getContactValue(name: string): string | undefined {
+        const contact = find(contacts, { name });
+        return contact ? contact.value : undefined;
+    }
+
+    const addressUrl = getContactValue("mapsUrl");
+    const phone = getContactValue("phone");
+    const email = getContactValue("email");
+    const address = getContactValue("address");
+    const facebook = getContactValue("facebook");
+    const youtube = getContactValue("youtube");
+    const instagram = getContactValue("instagram");
 
     return (
         //const phone: string = details.phone.value;

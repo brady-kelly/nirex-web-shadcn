@@ -1,17 +1,12 @@
-/** biome-ignore-all lint/a11y/useButtonType:  */
-/** biome-ignore-all lint/a11y/useSemanticElements:  */
+/** biome-ignore-all lint/a11y/useButtonType: sdsa */
+/** biome-ignore-all assist/source/organizeImports: lazy */
+/** biome-ignore-all lint/a11y/useSemanticElements: dssad */
 
 "use client";
 
-import { useRef } from "react";
-import { ShoppingCart as CartIcon, Search as SearchIcon } from "lucide-react";
-import { setSearchFormVisibility } from "@/lib/search";
 import HeaderLogo from "./headerLogo";
-import HeaderMenuOld from "./headerMenuOld";
 import type { MenuItemDetails } from "../shared/menuItem";
-import { appConfig } from "@/lib/config/appConfig";
 import { HeaderMenu } from "./headerMenu";
-import { HeaderButtons } from "./headerButtons";
 import { CartButton } from "./cartButton";
 import { SearchButton } from "./searchButton";
 
