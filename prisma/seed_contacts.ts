@@ -1,23 +1,27 @@
 // biome-ignore assist/source/organizeImports: fefewf
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../generated/prisma/client";
-import { SiteContactDetails } from "../data/siteConfig";
+import { promises as fs } from "fs";
+import type { SiteContactItem } from "@/lib/types/config";
+import prisma from "@/lib/prisma";
 
-const adapter = new PrismaPg({
-  connectionString: "postgres://admin:eNyRFrfr9Tdr7l@localhost:5432/nirex-tech",
-});
-const prisma = new PrismaClient({ adapter });
 async function main() {
-  const contacts = SiteContactDetails;
+  const json = await fs.readFile("data/siteContacts.json", "utf8");
+  const contacts = JSON.parse(json) as SiteContactItem[];
+
   for (const contact of contacts) {
-    const cont = await prisma.siteContacts.create({
-      data: {
+    await prisma.siteContact.upsert({
+      where: {
+        name: contact.name,
+        type: contact.type,
+      },
+      update: {
+        value: contact.value,
+      },
+      create: {
         name: contact.name,
         type: contact.type,
         value: contact.value,
       },
     });
-    console.log(`Created contact: ${cont.name} - ${cont.type}`);
   }
 }
 main()

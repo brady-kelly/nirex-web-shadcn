@@ -1,0 +1,19 @@
+model Categories {
+  id        Int@id  @default(autoincrement())
+  name      String
+  desc      String?
+  products  Pr
+}
+
+model ProductAttribute {
+  id    Int@id  @default(autoincrement())
+  name  String
+  value String?
+}
+
+model Products {
+  id      Int@id  @default(autoincrement())
+  name    String
+  variant String?
+  desc    String?
+}

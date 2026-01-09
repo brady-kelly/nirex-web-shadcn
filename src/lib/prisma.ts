@@ -7,7 +7,7 @@ const globalForPrisma = global as unknown as {
 };
 
 const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: "postgres://admin:eNyRFrfr9Tdr7l@localhost:5432/nirex-tech",
 });
 
 const prisma =
