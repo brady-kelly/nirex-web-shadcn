@@ -7,7 +7,7 @@ export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
-    seed: "tsx prisma/seed_contacts.ts",
+    seed: "tsx prisma/seed.ts",
   },
   datasource: {
     url: "postgres://admin:eNyRFrfr9Tdr7l@localhost:5432/nirex-tech",

@@ -3,7 +3,7 @@ import { promises as fs } from "fs";
 import type { SiteContactItem } from "@/lib/types/config";
 import prisma from "@/lib/prisma";
 
-async function main() {
+export async function seedContacts() {
   const json = await fs.readFile("data/siteContacts.json", "utf8");
   const contacts = JSON.parse(json) as SiteContactItem[];
 
@@ -24,12 +24,3 @@ async function main() {
     });
   }
 }
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });

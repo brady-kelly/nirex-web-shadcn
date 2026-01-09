@@ -21,3 +21,34 @@ model SiteContact {
   value String?
 }
 
+model Category {
+  id        Int@id  @default(autoincrement())
+  name      String  @unique
+  desc      String?
+  products  Product[]
+}
+
+model ProductAttribute {
+  id        Int@id  @default(autoincrement())
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int 
+  name      String  @unique
+  value     String?
+}
+
+model Product {
+  id            Int@id  @default(autoincrement())
+  category      Category @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+  name          String @unique
+  variant       String?
+  desc          String?
+  workingSize   String?
+  packageSize   String?
+  volume        String?
+  packageWeight String?
+  imageFile     String?
+  localPrice    Decimal @db.Money
+  
+  attribtutes ProductAttribute[]
+}

@@ -1,8 +1,7 @@
-model Categories {
+model Category {
   id        Int@id  @default(autoincrement())
   name      String
   desc      String?
-  products  Pr
 }
 
 model ProductAttribute {
@@ -11,7 +10,7 @@ model ProductAttribute {
   value String?
 }
 
-model Products {
+model Product {
   id      Int@id  @default(autoincrement())
   name    String
   variant String?
