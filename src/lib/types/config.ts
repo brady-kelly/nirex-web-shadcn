@@ -1,7 +1,6 @@
 export interface SiteContactItem {
-  type?: string;
+  type: string;
   name: string;
   value?: string;
-  url?: 
+  url?: string;
 }
-

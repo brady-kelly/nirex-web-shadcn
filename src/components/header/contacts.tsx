@@ -12,8 +12,7 @@ import { SiteContactDetails } from "../../../data/siteConfig";
 
 export default function ContactsBar() {
     const contacts = SiteContactDetails;
-    const details = SiteContactDetails[0];
-    const addressUrl = find(details, { name: "mapsUrl" })?.value;
+    const addressUrl = find(contacts, { name: "mapsUrl" })?.value;
 
     const phone = find(contacts, { name: "phone" })?.value;
     const email = find(contacts, { name: "email" })?.value;
@@ -69,7 +68,7 @@ export default function ContactsBar() {
                     </Item>
                 }
             </div>
-            <div id="social-media" className="flex gap-1.5 max-h-10">
+            <div id="social-media" className="flex gap-1 max-h-10">
                 {facebook && facebook.length > 0 &&
                     <Item size="sm">
                         <ItemMedia>
