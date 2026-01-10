@@ -1,9 +1,6 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-import { ProductCardOld, type ProductCardPropsOld } from "./productCardOld";
-import { ProductCard, ProductCardProps } from "./productCard";
+import { ProductCard, type ProductCardProps } from "./productCard";
 export interface ProductGridProps {
     id: string
     badge?: {
