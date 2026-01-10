@@ -21,14 +21,5 @@ export async function seedCategories() {
         desc: null,
       },
     });
-    const c: Category | null = await prisma.category.findUnique({
-      where: {
-        name: cat.heading,
-      },
-    });
-    if (!c) {
-      continue;
-    }
-    seedProducts(cat, c.id);
   }
 }
