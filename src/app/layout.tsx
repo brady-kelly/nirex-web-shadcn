@@ -29,12 +29,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cartProps = { items: headerMenuItems, inCartCount: 0 };
-  const contacts = await prisma.siteContacts.findMany() as SiteContactItem[];
+  const contacts = await prisma.siteContact.findMany() as SiteContactItem[];
 
   return (
     <html lang="en" >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`bg-white dark:bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContactsBar {...contacts} />
         <SiteHeader {...cartProps} />

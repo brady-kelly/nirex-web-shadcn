@@ -1,9 +1,11 @@
+import { Decimal } from "@prisma/client/runtime/client";
+
 const currencyFormatter = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 2,
 });
 
 export function formatCurrency(
-  amount: number,
+  amount: Decimal,
   currencyCode: string,
   locale = "en-ZA"
 ) {

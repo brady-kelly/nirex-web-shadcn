@@ -1,17 +1,24 @@
 import { ProductGrid } from "@/components/product/productGrid";
-import { getProductGridProps, loadAllProductCategories } from "@/lib/jsonData";
+import { getAllCategoriesWithProducts, getProductGridCardProps } from "@/lib/data/products";
 
 export default async function Home() {
 
-  const categories = await loadAllProductCategories();
-  const prodPromise = categories.map(async category => await getProductGridProps(category, 3));
-  const prods = await Promise.all(prodPromise);
+  const categories = await getAllCategoriesWithProducts();
 
   return (
-    <main className="bg-white dark:bg-black">
-      {prods.map((item) => (
-        <ProductGrid key={crypto.randomUUID()} {...item} />
-      ))}
-    </main>
+    <main>
+      {
+        categories.map((cat) => (
+          <ProductGrid
+            key={cat.id}
+            id={cat.id.toString()}
+            heading={cat.name}
+            description={cat.desc || ""}
+            items={getProductGridCardProps(cat.products)}
+            columns={3}
+          />
+        ))
+      }
+    </main >
   );
 }

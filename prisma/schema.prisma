@@ -50,5 +50,5 @@ model Product {
   imageFile     String?
   localPrice    Decimal @db.Money
   
-  attribtutes ProductAttribute[]
+  attribtutes   ProductAttribute[]
 }

@@ -18,14 +18,13 @@ export interface ProductGridProps {
 }
 
 export function ProductGrid({
-    badge,
     heading,
     description,
     items,
     columns = 3
 }: ProductGridProps) {
     const getColumnClasses = () => {
-        // TODO: Revise this Shirt.
+        // TODO: Revise this Shit.
         switch (columns) {
             case 2:
                 return "grid grid-cols-2";
@@ -41,13 +40,6 @@ export function ProductGrid({
             <div className="mx-auto px-4 md:px-6">
                 {/* Header */}
                 <div className="my-6">
-                    {badge?.label && (
-                        <div className="mb-6 flex justify-center">
-                            <Badge variant={badge.variant ?? "secondary"}>
-                                {badge.label}
-                            </Badge>
-                        </div>
-                    )}
                     <div className="ml-3">
                         {heading && (
                             <h2 className="ml-3 text-2xl md:text-4xl font-semibold text-balance max-w-4xl">
