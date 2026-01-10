@@ -49,9 +49,17 @@ export function ProductCard({
                         className="object-contain transition-transform duration-500 group-hover/usecase4:scale-105"
                     />
                 </AspectRatio>
-                <div className="my-6 h-10 text-sm">
-                    <p className="mb-1">{heading}</p>
-                    {subHeading && <p>{subHeading}</p>}
+                <div className="h-40">
+                    <div className="my-6 text-sm">
+                        <p className="mb-1">{heading}</p>
+                        {subHeading && <p>{subHeading}</p>}
+                    </div>
+                    <div className="my-1.5">
+                        {workingSize && <div>Working Size: {workingSize}</div>}
+                        {packageSize && <div>Package Size: {packageSize}</div>}
+                        {volume && <div>Volume: {volume}</div>}
+                        {packageWeight && <div>Package Weight: {packageWeight}</div>}
+                    </div>
                 </div>
                 <div className="ml-3">
                     {localPrice}
@@ -61,6 +69,8 @@ export function ProductCard({
                     <Button variant="outline" size="sm">ADD TO CART</Button>
                 </div>
             </CardContent>
+            <CardFooter>
+            </CardFooter>
         </Card>
     );
 }
