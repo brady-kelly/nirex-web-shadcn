@@ -1,6 +1,6 @@
-/** biome-ignore-all assist/source/organizeImports:  */
-/** biome-ignore-all lint/correctness/noUnusedImports:  */
-/** biome-ignore-all lint/style/useImportType:  */
+/** biome-ignore-all assist/source/organizeImports: Lazy */
+/** biome-ignore-all lint/correctness/noUnusedImports: Lazy */
+/** biome-ignore-all lint/style/useImportType: Lazy */
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
