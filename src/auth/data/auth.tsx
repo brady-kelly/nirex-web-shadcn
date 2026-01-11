@@ -7,7 +7,7 @@ import { User } from "../../../generated/prisma/client";
 // Component to Server Component which minimizes risk of passing it to a Client
 // Component.
 export const getCurrentUser = cache(async () => {
-    const token = (await cookies().get('AUTH_TOKEN'))?.value;
+    const token = (await cookies()).get('AUTH_TOKEN')?.value;
     const decodedToken = await decryptAndValidate(token);
     // Don't include secret tokens or private information as public fields.
     // Use classes to avoid accidentally passing the whole object to the client.

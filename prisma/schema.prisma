@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -7,46 +8,33 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  pwd   String
-}
-
-model Session {
-  id          Int     @id @default(autoincrement())
-  userId      Int
-  expiresAt   DateTime
-}
-
 model SiteContact {
-  id    Int@id  @default(autoincrement())
+  id    Int     @id @default(autoincrement())
   name  String  @unique
-  type  String  
+  type  String
   value String?
 }
 
 model Category {
-  id        Int@id  @default(autoincrement())
-  name      String  @unique
-  desc      String?
-  products  Product[]
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  desc     String?
+  products Product[]
 }
 
 model ProductAttribute {
-  id        Int@id  @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   product   Product @relation(fields: [productId], references: [id])
-  productId Int 
+  productId Int
   name      String  @unique
   value     String?
 }
 
 model Product {
-  id            Int@id  @default(autoincrement())
-  category      Category @relation(fields: [categoryId], references: [id])
+  id            Int                @id @default(autoincrement())
+  category      Category           @relation(fields: [categoryId], references: [id])
   categoryId    Int
-  name          String @unique
+  name          String             @unique
   variant       String?
   desc          String?
   workingSize   String?
@@ -54,7 +42,69 @@ model Product {
   volume        String?
   packageWeight String?
   imageFile     String?
-  localPrice    Decimal @db.Money
-  
+  localPrice    Decimal            @db.Money
   attribtutes   ProductAttribute[]
+}
+
+model User {
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
 }

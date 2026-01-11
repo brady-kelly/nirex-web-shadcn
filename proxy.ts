@@ -1,9 +1,22 @@
-import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
+import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 
-export default NextAuth(authConfig).auth;
+export async function proxy(request: NextRequest) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  // THIS IS NOT SECURE!
+  // This is the recommended approach to optimistically redirect users
+  // We recommend handling auth checks in each page/route
+  if (!session) {
+    return NextResponse.redirect(new URL("/sign-in", request.url));
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
-  // https://nextjs.org/docs/app/api-reference/file-conventions/proxy#matcher
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+  matcher: ["/dashboard"], // Specify the routes the middleware applies to
 };
