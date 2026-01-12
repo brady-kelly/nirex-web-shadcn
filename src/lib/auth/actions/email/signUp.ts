@@ -1,8 +1,8 @@
-/** biome-ignore-all assist/source/organizeImports: <explanation> */
+/** biome-ignore-all assist/source/organizeImports: Later */
 "use server";
 
-import { auth } from "./auth";
-import { signupSchema } from "./zodSchemas";
+import { auth } from "../../auth";
+import { signupSchema } from "./schemas";
 
 export async function signUpEmail(initialState: any, formData: FormData) {
   const validatedFields = signupSchema.safeParse({
