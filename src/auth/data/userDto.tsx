@@ -1,5 +1,5 @@
 import 'server-only';
-import { getCurrentUser } from './auth';
+import { getCurrentUser } from '../auth';
 import type { User } from "../../../generated/prisma/client";
 
 function canSeeUsername(viewer: User) {
