@@ -1,16 +1,7 @@
 /** biome-ignore-all assist/source/organizeImports: Lazy */
-import prisma from "@/lib/prisma";
 import { formatCurrency } from "../formatting";
 import type { ProductCardProps } from "@/components/product/productCard";
 import type { Product } from "../../../generated/prisma/client";
-
-export async function getAllCategoriesWithProducts() {
-  return prisma.category.findMany({
-    include: {
-      products: true,
-    },
-  });
-}
 
 function getImageSrcPath(imageFilename?: string): string {
   return `/products/${imageFilename || "generic-printer.jpg"}`;

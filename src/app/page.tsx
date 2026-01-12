@@ -1,9 +1,28 @@
 import { ProductGrid } from "@/components/product/productGrid";
-import { getAllCategoriesWithProducts, getProductGridCardProps } from "@/lib/data/products";
+import { auth } from "@/lib/auth/auth";
+import { getProductGridCardProps } from "@/lib/data/products";
+import prisma from "@/lib/prisma";
+import { headers } from "next/headers";
+
+async function getAllCategoriesWithProducts() {
+  return prisma.category.findMany({
+    include: {
+      products: true,
+    },
+  });
+}
 
 export default async function Home() {
 
   const categories = await getAllCategoriesWithProducts();
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (session?.user.role !== "admin") {
+    notFound();
+  }
 
   return (
     <main>

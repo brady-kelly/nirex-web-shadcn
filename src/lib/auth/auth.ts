@@ -1,7 +1,8 @@
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { betterAuth } from "better-auth";
-import { PrismaClient } from "../../generated/prisma/client";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import prisma from "./prisma";
+import prisma from "../prisma";
+import { nextCookies } from "better-auth/next-js";
 
 export const auth = betterAuth({
   emailAndPassword: {
@@ -16,4 +17,5 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
+  plugins: [nextCookies()], // This plugin must always be last.
 });

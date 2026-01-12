@@ -1,5 +1,4 @@
-/** biome-ignore-all assist/source/organizeImports: fgfdg */
-import LoginForm from '@/components/ui/login-form';
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { Suspense } from 'react';
 
 export default function LoginPage() {
