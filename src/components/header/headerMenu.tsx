@@ -30,19 +30,19 @@ export function HeaderMenu({ items }: { items: MenuItemDetails[] }) {
             <NavigationMenuList className="flex-wrap">
                 {items.map((item) => (
                     <NavigationMenuItem key={crypto.randomUUID()}>
-                        {item.subItems?.length || 0}
-                        <NavigationMenuTrigger>{item.text}</NavigationMenuTrigger>
-                        {item.subItems && item.subItems.length > 0 && (
-                            <NavigationMenuContent>
-                                <ul className="grid w-50 gap-4">
-                                    {item.subItems.map((item) => (
-                                        <NavigationMenuLink asChild key={crypto.randomUUID()}>
-                                            <Link href={getWorkingUrl(item.url)}>{item.text}</Link>
-                                        </NavigationMenuLink>
-                                    ))}
-                                </ul>
-                            </NavigationMenuContent>)}
-                        {(!item.subItems || item.subItems.length === 0) && (
+                        {item.subItems?.length ? (
+                            <>
+                                <NavigationMenuTrigger>{item.text}</NavigationMenuTrigger>
+                                <NavigationMenuContent>
+                                    <ul className="grid w-50 gap-4">
+                                        {item.subItems.map((item) => (
+                                            <NavigationMenuLink asChild key={crypto.randomUUID()}>
+                                                <Link href={getWorkingUrl(item.url)}>{item.text}</Link>
+                                            </NavigationMenuLink>
+                                        ))}
+                                    </ul>
+                                </NavigationMenuContent>
+                            </>) : (
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                                 <Link href={getWorkingUrl(item.url)}>{item.text}</Link>
                             </NavigationMenuLink>
