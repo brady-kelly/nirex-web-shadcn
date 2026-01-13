@@ -30,10 +30,10 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
 
     return (
         //const phone: string = details.phone.value;
-        <div className="navbar w-full flex justify-between overflow-hidden">
+        <div className="navbar w-full flex justify-between overflow-hidden bg-[#3C5387] text-white">
             <div id="office-comms" className="flex gap-1.5">
                 {phone && phone.length > 0 &&
-                    <Item size="sm">
+                    <Item size="sm" className="text-white">
                         <ItemActions>
                             <Smartphone />
                         </ItemActions>
@@ -42,7 +42,7 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
                             title="Link for Contact Phone"
                         >
                             <ItemContent>
-                                <ItemDescription >{phone}</ItemDescription>
+                                <ItemDescription className="text-white" >{phone}</ItemDescription>
                             </ItemContent>
                         </a>
                     </Item>
@@ -57,7 +57,7 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
                             title="Link for Contact Email"
                         >
                             <ItemContent>
-                                <ItemDescription >{email}</ItemDescription>
+                                <ItemDescription className="text-white" >{email}</ItemDescription>
                             </ItemContent>
                         </a>
                     </Item>
@@ -69,7 +69,7 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
                         </ItemActions>
                         <a href={addressUrl} title="Maps Link for Contact Address">
                             <ItemContent>
-                                <ItemDescription >{address}</ItemDescription>
+                                <ItemDescription className="text-white" >{address}</ItemDescription>
                             </ItemContent>
                         </a>
                     </Item>
@@ -81,7 +81,7 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
                         <ItemMedia>
                             <a href={facebook} title="Facebook Link">
                                 <Image
-                                    src="/icons/facebook.png"
+                                    src="/icons/facebook-white.png"
                                     alt="Facebook Logo"
                                     width={24}
                                     height={24}
@@ -111,7 +111,7 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
                         <ItemMedia>
                             <a href={instagram} title="Instagram Link">
                                 <Image
-                                    src="/icons/instagram.png"
+                                    src="/icons/instagram-white.png"
                                     alt="Instagram Logo"
                                     width={24}
                                     height={24}
