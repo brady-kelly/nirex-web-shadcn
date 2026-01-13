@@ -4,6 +4,8 @@
 import { Button } from "@/components/ui/button"
 import { signUpEmail } from "@/lib/auth/actions/email/signUp"
 import { useActionState } from "react"
+import { Input } from "../ui/input"
+import { Label } from "../ui/label"
 
 const initialState = {
     message: "",
@@ -20,23 +22,22 @@ export function SignupForm() {
     return (
         <form action={formAction} className="space-y-8">
             <div className="grid w-full max-w-sm items-center gap-3">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email" required />
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" name="email" type="email" placeholder="Your email" required />
                 <p aria-live="polite">{state?.errors.email}</p>
             </div>
             <div className="grid w-full max-w-sm items-center gap-3">
-                <label htmlFor="username">User name</label>
-                <input type="text" id="username" name="username" placeholder="User name" />
-                <p aria-live="polite">{state?.errors.username}</p>
+                <Label htmlFor="username">User name</Label>
+                <Input id="username" name="username" type="text" placeholder="User name" />
             </div>
             <div className="grid w-full max-w-sm items-center gap-3">
-                <label htmlFor="password">User name</label>
-                <input type="password" id="password" placeholder="Password" required />
+                <Label htmlFor="password">Password</Label>
+                <Input id="password" name="password" type="password" placeholder="Password" required />
                 <p aria-live="polite">{state?.errors.password}</p>
             </div>
             <div className="grid w-full max-w-sm items-center gap-3">
-                <label htmlFor="email">User name</label>
-                <input type="password" id="confirmPassword" placeholder="Confirm password" required />
+                <Label htmlFor="econfirmPassword">Confirm Password</Label>
+                <Input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required />
                 <p aria-live="polite">{state?.errors.confirmPassword}</p>
             </div>
 

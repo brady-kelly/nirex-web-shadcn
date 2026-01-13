@@ -1,9 +1,8 @@
-/** biome-ignore-all lint/complexity/useOptionalChain:  */
+/** biome-ignore-all lint/complexity/useOptionalChain: Later */
 "use client"
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 
 //import { useIsMobile } from "@/hooks/use-mobile"
 import {
@@ -15,11 +14,10 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { MenuItemDetails } from "../shared/menuItem"
-import { get } from "http"
+import type { MenuItemDetails } from "../shared/menuItem"
 
-function getWorkingUrl(urlText?: string): string {
-    return urlText ? urlText : "#0";
+function getWorkingUrl(url?: string): string {
+    return url || "#0";
 }
 
 export function HeaderMenu({ items }: { items: MenuItemDetails[] }) {
@@ -32,10 +30,11 @@ export function HeaderMenu({ items }: { items: MenuItemDetails[] }) {
             <NavigationMenuList className="flex-wrap">
                 {items.map((item) => (
                     <NavigationMenuItem key={crypto.randomUUID()}>
+                        {item.subItems?.length || 0}
                         <NavigationMenuTrigger>{item.text}</NavigationMenuTrigger>
                         {item.subItems && item.subItems.length > 0 && (
                             <NavigationMenuContent>
-                                <ul className="grid w-[200px] gap-4">
+                                <ul className="grid w-50 gap-4">
                                     {item.subItems.map((item) => (
                                         <NavigationMenuLink asChild key={crypto.randomUUID()}>
                                             <Link href={getWorkingUrl(item.url)}>{item.text}</Link>

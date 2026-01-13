@@ -16,14 +16,6 @@ export default async function Home() {
 
   const categories = await getAllCategoriesWithProducts();
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (session?.user.role !== "admin") {
-    notFound();
-  }
-
   return (
     <main>
       {

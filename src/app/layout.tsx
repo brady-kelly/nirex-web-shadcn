@@ -6,7 +6,7 @@ import { headerMenuItems } from "@/lib/config/headerMenuItems";
 import { SiteHeader } from "@/components/header/siteHeader";
 import ContactsBar from "@/components/header/contacts";
 import prisma from "@/lib/prisma";
-import { SiteContactItem } from "@/lib/types/config";
+import type { SiteContactItem } from "@/lib/types/config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +28,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cartProps = { items: headerMenuItems, inCartCount: 0 };
+  const menuProps = { items: headerMenuItems, inCartCount: 0 };
   const contacts = await prisma.siteContact.findMany() as SiteContactItem[];
 
   return (
@@ -37,7 +37,7 @@ export default async function RootLayout({
         className={`bg-white dark:bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContactsBar {...contacts} />
-        <SiteHeader {...cartProps} />
+        <SiteHeader {...menuProps} />
         {children}
       </body>
     </html >

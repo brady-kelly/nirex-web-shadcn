@@ -40,4 +40,8 @@ export const headerMenuItems: MenuItemDetails[] = [
       },
     ],
   },
+  {
+    text: "Sign Up",
+    url: "/signup",
+  },
 ];
