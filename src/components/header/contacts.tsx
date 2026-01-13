@@ -1,4 +1,4 @@
-// biome-ignore assist/source/organizeImports: too bad
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 "use client";
 
 import { Mail, MapPin, Smartphone } from "lucide-react";

@@ -9,15 +9,19 @@ export async function loginEmail(initialState: any, formData: FormData) {
   });
 
   if (!validatedFields.success) {
+    const errList = z.flattenError(validatedFields.error).fieldErrors;
+    console.log(errList);
     return {
-      errors: z.flattenError(validatedFields.error).fieldErrors,
+      errors: errList,
     };
   }
 
-  const data = await auth.api.signInEmail({
-    body: {
-      email: validatedFields.data.email,
-      password: validatedFields.data.password,
-    },
-  });
+  console.log(validatedFields);
+
+  // const data = await auth.api.signInEmail({
+  //   body: {
+  //     email: validatedFields.data.email,
+  //     password: validatedFields.data.password,
+  //   },
+  // });
 }

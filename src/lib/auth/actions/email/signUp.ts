@@ -14,8 +14,10 @@ export async function signUpEmail(initialState: any, formData: FormData) {
   });
 
   if (!validatedFields.success) {
+    const errList = z.flattenError(validatedFields.error).fieldErrors;
+    console.log(errList);
     return {
-      errors: z.flattenError(validatedFields.error).fieldErrors,
+      errors: errList,
     };
   }
 

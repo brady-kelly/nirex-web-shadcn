@@ -4,6 +4,7 @@
 import { loginEmail } from '@/lib/auth/actions/email/login';
 import { useActionState } from 'react';
 import { Button } from '../ui/button';
+import { Link } from 'lucide-react';
 
 const initialState = {
     message: "",
@@ -30,7 +31,8 @@ export default function LoginForm() {
                 <p aria-live="polite">{state?.errors.password}</p>
             </div>
 
-            <Button type="submit" disabled={pending}>Submit</Button>
+            <Button type="submit" disabled={pending}>Log in</Button>
+            <p>Don't have an account? <Link href="/signup">Sign up</Link></p>
         </form>
     );
 }

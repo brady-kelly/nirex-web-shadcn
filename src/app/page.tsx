@@ -1,8 +1,6 @@
 import { ProductGrid } from "@/components/product/productGrid";
-import { auth } from "@/lib/auth/auth";
 import { getProductGridCardProps } from "@/lib/data/products";
 import prisma from "@/lib/prisma";
-import { headers } from "next/headers";
 
 async function getAllCategoriesWithProducts() {
   return prisma.category.findMany({
