@@ -40,16 +40,7 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
                     <IconContactItem content={email} type="email"><Mail /></IconContactItem>
                 }
                 {address && address.length > 0 &&
-                    <Item size="sm">
-                        <ItemActions>
-                            <MapPin />
-                        </ItemActions>
-                        <a href={addressUrl} title="Maps Link for Contact Address">
-                            <ItemContent>
-                                <ItemDescription className="text-white" >{address}</ItemDescription>
-                            </ItemContent>
-                        </a>
-                    </Item>
+                    <IconContactItem content={address} type="address" alturl={addressUrl}><MapPin /></IconContactItem>
                 }
             </div>
             <div id="social-media" className="flex gap-1 max-h-10">

@@ -3,7 +3,8 @@ import { Item, ItemActions, ItemContent, ItemDescription } from "../ui/item";
 export interface IconContactItemProps {
     content: string,
     children: React.ReactNode,
-    type?: string
+    type?: string,
+    alturl?: string,
 }
 
 function getUrl(content: string, type?: string): string {
@@ -15,6 +16,9 @@ function getUrl(content: string, type?: string): string {
         case "phone":
             href = `tel:${content}`;
             break;
+        case "address":
+            href = "#";
+            break;
         default:
             href = content;
             break;
@@ -22,8 +26,8 @@ function getUrl(content: string, type?: string): string {
     return href;
 }
 
-export function IconContactItem({ type, content, children }: IconContactItemProps) {
-    const url = getUrl(content, type);
+export function IconContactItem({ type, content, alturl, children }: IconContactItemProps) {
+    const url = alturl ? alturl : getUrl(content, type);
     return (
         < Item size="sm" >
             <ItemActions>
