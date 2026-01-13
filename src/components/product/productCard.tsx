@@ -9,9 +9,10 @@ import {
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { LinkAsButton } from "../shared/linkAsButton";
 
 export interface ProductCardProps {
-    id: string;
+    productId: string;
     heading: string;
     subHeading?: string;
     workingSize?: string;
@@ -23,10 +24,15 @@ export interface ProductCardProps {
         src: string;
         alt: string;
     };
+    showEdit: boolean
+}
+
+function getEditLink(productid: string) {
+    return `productAdmin/${productid}`;
 }
 
 export function ProductCard({
-    id,
+    productId,
     heading,
     subHeading,
     workingSize,
@@ -34,11 +40,15 @@ export function ProductCard({
     volume,
     packageWeight,
     localPrice,
-    image
+    image,
+    showEdit = false
 }: ProductCardProps) {
     return (
         <Card>
             <CardContent>
+                {showEdit && (
+                    <LinkAsButton href={getEditLink(productId)} text="Edit" />
+                )}
                 <AspectRatio ratio={16 / 9}>
                     <Image
                         fill

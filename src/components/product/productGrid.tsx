@@ -50,7 +50,7 @@ export function ProductGrid({
                 {/* Grid Cards */}
                 <div className="grid grid-cols-3 gap-6">
                     {items.map((item) => (
-                        <ProductCard key={item.id} {...item} />
+                        <ProductCard key={item.productId} {...item} />
                     ))}
                 </div>
             </div>

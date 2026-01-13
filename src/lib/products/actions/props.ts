@@ -1,21 +1,19 @@
-/** biome-ignore-all assist/source/organizeImports: Lazy */
-import { formatCurrency } from "../formatting";
-import type { ProductCardProps } from "@/components/product/productCard";
-import type { Product } from "../../../generated/prisma/client";
 import type { ProductGridProps } from "@/components/product/productGrid";
+import { formatCurrency } from "@/lib/formatting";
+import type { Product } from "../../../../generated/prisma/client";
+import { getSession } from "@/lib/auth/actions/session";
+import { ProductCardProps } from "@/components/product/productCard";
 
 function getImageSrcPath(imageFilename?: string): string {
   return `/products/${imageFilename || "generic-printer.jpg"}`;
 }
 
-export function buildProductGridProps(
-  catId: number,
-  catName: string,
-  products: Product[],
-  cols?: 2 | 3 | 4
-): ProductGridProps {
-  const cardProps = products.map((product) => ({
-    id: product.id.toString(),
+export function buildProductCardProps(
+  product: Product,
+  showEdit: boolean
+): ProductCardProps {
+  const props = {
+    productId: product.id.toString(),
     heading: product.name,
     subHeading: product.desc || undefined,
     workingSize: product.workingSize || undefined,
@@ -27,7 +25,21 @@ export function buildProductGridProps(
       alt: "product image",
     },
     localPrice: formatCurrency(product.localPrice, "ZAR"),
-  }));
+    showEdit: showEdit,
+  };
+  return props;
+}
+
+export function buildProductGridProps(
+  catId: number,
+  catName: string,
+  products: Product[],
+  cols?: 2 | 3 | 4,
+  isAdmin?: boolean
+): ProductGridProps {
+  const cardProps = products.map((product) =>
+    buildProductCardProps(product, isAdmin || false)
+  );
 
   const gridProps: ProductGridProps = {
     id: catId.toString(),

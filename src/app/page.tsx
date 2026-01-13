@@ -1,22 +1,12 @@
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { ProductGrid } from "@/components/product/productGrid";
-import { buildProductGridCardProps, buildProductGridProps } from "@/lib/data/products";
-import prisma from "@/lib/prisma";
-
-async function getAllCategoriesWithProducts() {
-  return prisma.category.findMany({
-    include: {
-      products: true,
-    },
-  });
-}
+import { getAllCategoriesWithProducts } from "@/lib/products/actions/data";
+import { buildProductGridProps } from "@/lib/products/actions/props";
 
 export default async function Home() {
-
   const categories = await getAllCategoriesWithProducts();
-
   return (
     <main>
-
       {categories.map((cat) => {
         const gridProps = buildProductGridProps(cat.id, cat.name, cat.products);
         return (

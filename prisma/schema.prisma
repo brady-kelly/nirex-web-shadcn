@@ -8,6 +8,11 @@ datasource db {
   provider = "postgresql"
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 model SiteConfig {
   id                Int     @id @default(autoincrement())
   name              String  @unique @default("current")
@@ -62,7 +67,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
-  role          String?
+  role          Role      @default(USER)
 
   @@unique([email])
   @@map("user")
