@@ -3,10 +3,6 @@
 import { ProductCard, type ProductCardProps } from "./productCard";
 export interface ProductGridProps {
     id: string
-    badge?: {
-        label: string;
-        variant?: "default" | "secondary" | "outline";
-    };
     heading?: string;
     description?: string;
     items: ProductCardProps[];

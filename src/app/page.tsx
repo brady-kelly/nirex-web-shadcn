@@ -1,5 +1,5 @@
 import { ProductGrid } from "@/components/product/productGrid";
-import { getProductGridCardProps } from "@/lib/data/products";
+import { buildProductGridCardProps, buildProductGridProps } from "@/lib/data/products";
 import prisma from "@/lib/prisma";
 
 async function getAllCategoriesWithProducts() {
@@ -16,17 +16,20 @@ export default async function Home() {
 
   return (
     <main>
-      {
-        categories.map((cat) => (
+
+      {categories.map((cat) => {
+        const gridProps = buildProductGridProps(cat.id, cat.name, cat.products);
+        return (
           <ProductGrid
-            key={cat.id}
-            id={cat.id.toString()}
-            heading={cat.name}
-            description={cat.desc || ""}
-            items={getProductGridCardProps(cat.products)}
-            columns={3}
+            key={gridProps.id}
+            id={gridProps.id}
+            heading={gridProps.heading}
+            description={gridProps.description}
+            items={gridProps.items}
+            columns={gridProps.columns}
           />
-        ))
+        )
+      })
       }
     </main >
   );

@@ -47,12 +47,12 @@ export function ProductCard({
                         className="object-contain transition-transform duration-500 group-hover/usecase4:scale-105"
                     />
                 </AspectRatio>
-                <div className="h-40">
+                <div className="h-36">
                     <div className="my-6 text-sm">
                         <p className="mb-1">{heading}</p>
                         {subHeading && <p>{subHeading}</p>}
                     </div>
-                    <div className="my-1.5">
+                    <div className="my-1.5 text-sm">
                         {workingSize && <div>Working Size: {workingSize}</div>}
                         {packageSize && <div>Package Size: {packageSize}</div>}
                         {volume && <div>Volume: {volume}</div>}

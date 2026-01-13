@@ -2,17 +2,20 @@
 import { formatCurrency } from "../formatting";
 import type { ProductCardProps } from "@/components/product/productCard";
 import type { Product } from "../../../generated/prisma/client";
+import type { ProductGridProps } from "@/components/product/productGrid";
 
 function getImageSrcPath(imageFilename?: string): string {
   return `/products/${imageFilename || "generic-printer.jpg"}`;
 }
 
-/* Gets an array of ProductCardProps intended for a whole ProductGrid. */
-export function getProductGridCardProps(
-  products: Product[]
-): ProductCardProps[] {
+export function buildProductGridProps(
+  catId: number,
+  catName: string,
+  products: Product[],
+  cols?: 2 | 3 | 4
+): ProductGridProps {
   const cardProps = products.map((product) => ({
-    id: crypto.randomUUID(),
+    id: product.id.toString(),
     heading: product.name,
     subHeading: product.desc || undefined,
     workingSize: product.workingSize || undefined,
@@ -26,5 +29,11 @@ export function getProductGridCardProps(
     localPrice: formatCurrency(product.localPrice, "ZAR"),
   }));
 
-  return cardProps;
+  const gridProps: ProductGridProps = {
+    id: catId.toString(),
+    heading: catName,
+    columns: cols || 3,
+    items: cardProps,
+  };
+  return gridProps;
 }
