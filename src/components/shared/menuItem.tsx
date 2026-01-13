@@ -1,5 +1,8 @@
 // A IU agnostic structure of info about a menu item.
-/** biome-ignore-all lint/suspicious/noArrayIndexKey:  */
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: Later */
+
+"use client";
+
 export interface MenuItemDetails {
     text: string;
     url?: string;

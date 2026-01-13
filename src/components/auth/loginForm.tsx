@@ -1,4 +1,6 @@
-/** biome-ignore-all assist/source/organizeImports: Later */
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
+"use client";
+
 import { loginEmail } from '@/lib/auth/actions/email/login';
 import { useActionState } from 'react';
 import { Button } from '../ui/button';

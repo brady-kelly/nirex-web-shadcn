@@ -1,4 +1,7 @@
-/** biome-ignore-all lint/a11y/useSemanticElements:  */
+/** biome-ignore-all lint/a11y/useSemanticElements: Later */
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
+"use client";
+
 import { setSearchFormVisibility } from "@/lib/search";
 import { useRef } from "react";
 import { Button } from "../ui/button";
@@ -19,6 +22,7 @@ export function SearchButton() {
             <Button variant="ghost" size="lg" onClick={handleSearchClick}>
                 <Search />
             </Button>
+            {/** biome-ignore lint/a11y/useSemanticElements: <explanation> */}
             <form
                 ref={searchFormRef}
                 id="header-search"

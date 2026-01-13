@@ -1,12 +1,10 @@
-/** biome-ignore-all lint/correctness/noUnusedImports:  */
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
+"use client";
+
 import {
     Card,
-    CardAction,
     CardContent,
-    CardDescription,
     CardFooter,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";

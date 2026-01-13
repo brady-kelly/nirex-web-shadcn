@@ -1,7 +1,6 @@
 /** biome-ignore-all lint/complexity/useOptionalChain: Later */
 "use client"
 
-import * as React from "react"
 import Link from "next/link"
 
 //import { useIsMobile } from "@/hooks/use-mobile"

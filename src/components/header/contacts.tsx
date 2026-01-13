@@ -1,4 +1,6 @@
 // biome-ignore assist/source/organizeImports: too bad
+"use client";
+
 import { Mail, MapPin, Smartphone } from "lucide-react";
 import { find } from "es-toolkit/compat";
 import Image from "next/image";
