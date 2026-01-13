@@ -12,6 +12,8 @@ import {
     ItemMedia,
 } from "../ui/item";
 import type { SiteContactItem } from "@/lib/types/config";
+import { IconContactItem } from "../shared/iconContactItem";
+import { LogoContactItem } from "../shared/logoContactItem";
 
 export default function ContactsBar(contacts: SiteContactItem[]) {
 
@@ -29,38 +31,13 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
     const instagram = getContactValue("instagram");
 
     return (
-        //const phone: string = details.phone.value;
         <div className="navbar w-full flex justify-between overflow-hidden bg-[#3C5387] text-white">
             <div id="office-comms" className="flex gap-1.5">
                 {phone && phone.length > 0 &&
-                    <Item size="sm" className="text-white">
-                        <ItemActions>
-                            <Smartphone />
-                        </ItemActions>
-                        <a
-                            href={`tel:${phone}`}
-                            title="Link for Contact Phone"
-                        >
-                            <ItemContent>
-                                <ItemDescription className="text-white" >{phone}</ItemDescription>
-                            </ItemContent>
-                        </a>
-                    </Item>
+                    <IconContactItem content={phone} type="phone"><Smartphone /></IconContactItem>
                 }
                 {email && email.length > 0 &&
-                    <Item size="sm">
-                        <ItemActions>
-                            <Mail />
-                        </ItemActions>
-                        <a
-                            href={`mailto:${email}`}
-                            title="Link for Contact Email"
-                        >
-                            <ItemContent>
-                                <ItemDescription className="text-white" >{email}</ItemDescription>
-                            </ItemContent>
-                        </a>
-                    </Item>
+                    <IconContactItem content={email} type="email"><Mail /></IconContactItem>
                 }
                 {address && address.length > 0 &&
                     <Item size="sm">
@@ -76,51 +53,15 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
                 }
             </div>
             <div id="social-media" className="flex gap-1 max-h-10">
-                {facebook && facebook.length > 0 &&
-                    <Item size="sm">
-                        <ItemMedia>
-                            <a href={facebook} title="Facebook Link">
-                                <Image
-                                    src="/icons/facebook-white.png"
-                                    alt="Facebook Logo"
-                                    width={24}
-                                    height={24}
-                                    className="aspect-square w-full object-cover"
-                                ></Image>
-                            </a>
-                        </ItemMedia>
-                    </Item>
-                }
-                {youtube && youtube.length > 0 &&
-                    <Item size="sm">
-                        <ItemMedia>
-                            <a href={youtube} title="Youtube Link">
-                                <Image
-                                    src="/icons/youtube.png"
-                                    alt="Youtube Logo"
-                                    width={24}
-                                    height={24}
-                                    className="aspect-square w-full object-cover"
-                                />
-                            </a>
-                        </ItemMedia>
-                    </Item>
-                }
-                {instagram && instagram.length > 0 &&
-                    < Item size="sm">
-                        <ItemMedia>
-                            <a href={instagram} title="Instagram Link">
-                                <Image
-                                    src="/icons/instagram-white.png"
-                                    alt="Instagram Logo"
-                                    width={24}
-                                    height={24}
-                                    className="aspect-square w-full object-cover"
-                                />
-                            </a>
-                        </ItemMedia>
-                    </Item>
-                }
+                {facebook && facebook.length > 0 && (
+                    <LogoContactItem url={facebook} type="Facebook" logoSrc="facebook-white.png"></LogoContactItem>
+                )}
+                {youtube && youtube.length > 0 && (
+                    <LogoContactItem url={youtube} type="Youtube" logoSrc="youtube.png"></LogoContactItem>
+                )}
+                {instagram && instagram.length > 0 && (
+                    <LogoContactItem url={instagram} type="Instagram" logoSrc="instagram-white.png"></LogoContactItem>
+                )}
             </div>
         </div >
     );
