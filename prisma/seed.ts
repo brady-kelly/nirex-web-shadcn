@@ -1,12 +1,11 @@
 import prisma from "@/lib/prisma";
-import { seedContacts } from "./seed_contacts";
-import { seedCategories } from "./seedCategories";
-import { seedProducts } from "./seedProducts";
+import { seedMenus } from "./seedMenus";
 
 async function main() {
-  await seedContacts();
-  await seedCategories();
-  await seedProducts();
+  //await seedContacts();
+  //await seedCategories();
+  //await seedProducts();
+  await seedMenus();
 }
 main()
   .then(async () => {

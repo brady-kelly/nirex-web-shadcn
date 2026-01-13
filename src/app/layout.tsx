@@ -2,11 +2,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { headerMenuItems } from "@/lib/config/headerMenuItems";
-import { SiteHeader } from "@/components/header/siteHeader";
 import ContactsBar from "@/components/header/contacts";
 import prisma from "@/lib/prisma";
 import type { SiteContactItem } from "@/lib/types/config";
+import { getHeaderMenuItems } from "@/lib/config/actions/siteConfig";
+import { SiteHeader } from "@/components/header/siteHeader";
+import { headerMenuItems } from "@/lib/config/headerMenuItems";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  //const headerMenuItems = await getHeaderMenuItems();
   const menuProps = { items: headerMenuItems, inCartCount: 0 };
   const contacts = await prisma.siteContact.findMany() as SiteContactItem[];
 
