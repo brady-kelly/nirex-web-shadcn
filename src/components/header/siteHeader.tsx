@@ -17,7 +17,7 @@ export interface SiteHeaderProps {
 
 export function SiteHeader(props: SiteHeaderProps) {
     return (
-        <header className="flex flex-row justify-between px-3">
+        <header className="flex flex-row justify-between py-3 px-3">
             <div className="order-first">
                 <HeaderLogo />
             </div>
