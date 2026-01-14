@@ -32,7 +32,9 @@ export default async function AdminLayout({
             <body
                 className={`bg-white dark:bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                {children}
+                <main className="px-11 py-5">
+                    {children}
+                </main>
             </body>
         </html >
     );

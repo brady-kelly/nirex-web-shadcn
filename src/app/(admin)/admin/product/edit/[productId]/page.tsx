@@ -15,15 +15,17 @@ export default async function ProductEditPage({ params }: { params: Promise<{ pr
         notFound();
 
     return (
-        <ProductEditor
-            productId={id.toString()}
-            name={prod.name}
-            categoryId={prod.categoryId.toString()}
-            categories={categories}
-            localPrice={prod.localPrice.toString()}
-            workingSize={prod.workingSize ?? undefined}
-            packageSize={prod.packageSize ?? undefined}
-            volume={prod.volume ?? undefined}
-        />
+        <section>
+            <ProductEditor
+                productId={id.toString()}
+                name={prod.name}
+                categoryId={prod.categoryId.toString()}
+                categories={categories}
+                localPrice={prod.localPrice.toString()}
+                workingSize={prod.workingSize ?? undefined}
+                packageSize={prod.packageSize ?? undefined}
+                volume={prod.volume ?? undefined}
+            />
+        </section>
     );
 }

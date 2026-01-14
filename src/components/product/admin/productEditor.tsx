@@ -5,6 +5,7 @@ import { useActionState } from "react";
 import { updateProduct } from "@/lib/products/actions/data";
 import { FormInput } from "@/components/shared/formInput";
 import { Button } from "@/components/ui/button";
+import { FieldSet } from "@/components/shared/fieldSet";
 
 export interface ProductEditorProps {
     productId: string,
@@ -42,21 +43,23 @@ export function ProductEditor({ productId, name, variant, desc, workingSize, pac
     const [state, formAction, pending] = useActionState(updateProduct, initialState)
     return (
         <div className="w-full max-w-md">
+            <h1 className="pb-3">Edit Product: {name}</h1>
             <form action={formAction}>
-                <fieldset>
-                    <legend>Product Properties</legend>
-                    <div className="flex flex-row flex-wrap gap-y-2">
-                        <FormInput name="name" required value={name}></FormInput>
-                        <FormInput name="variant" value={variant}></FormInput>
-                        <FormInput name="desc" label="Description" value={desc}></FormInput>
-                        <FormInput name="workingSize" value={workingSize}></FormInput>
-                        <FormInput name="packageSize" value={packageSize}></FormInput>
-                        <FormInput name="volume" value={volume}></FormInput>
-                        <FormInput name="packageWeight" value={packageWeight}></FormInput>
-                        <FormInput name="localPrice" value={localPrice}></FormInput>
-                    </div>
-                </fieldset>
-                <Button type="submit" disabled={pending}>Save</Button>
+                <FieldSet heading="Product Properties">
+                    <FormInput name="name" required value={name} />
+                    <FormInput name="variant" value={variant} />
+                    <FormInput name="desc" label="Description" value={desc} />
+                </FieldSet>
+                <FieldSet heading="Product Attributes">
+                    <FormInput name="workingSize" value={workingSize} />
+                    <FormInput name="packageSize" value={packageSize} />
+                    <FormInput name="volume" value={volume} />
+                    <FormInput name="packageWeight" value={packageWeight} />
+                </FieldSet>
+                <FieldSet heading="Pricing">
+                    <FormInput name="localPrice" value={localPrice} />
+                </FieldSet>
+                <Button className="mt-4" type="submit" disabled={pending}>Save</Button>
             </form>
         </div>
     );
