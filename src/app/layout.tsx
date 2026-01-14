@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ContactsBar from "@/components/header/contacts";
 import prisma from "@/lib/prisma";
-import type { SiteContactItem } from "@/lib/types/config";
+import type { SiteContactItem } from "@/lib/config/contactItem";
 import { getHeaderMenuItems } from "@/lib/config/actions/siteConfig";
 import { SiteHeader } from "@/components/header/siteHeader";
 

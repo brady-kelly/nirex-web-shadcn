@@ -1,6 +1,6 @@
 // biome-ignore assist/source/organizeImports: fefewf
 import { promises as fs } from "fs";
-import type { SiteContactItem } from "@/lib/types/config";
+import type { SiteContactItem } from "@/lib/config/contactItem";
 import prisma from "@/lib/prisma";
 
 export async function seedContacts() {

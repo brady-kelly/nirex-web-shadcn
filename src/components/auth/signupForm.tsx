@@ -1,11 +1,12 @@
-/** biome-ignore-all assist/source/organizeImports: Later */
-"use client"
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { signUpEmail } from "@/lib/auth/actions/email/signUp"
-import { useActionState } from "react"
-import { Input } from "../ui/input"
-import { Label } from "../ui/label"
+import { signUpEmail } from '@/lib/auth/actions/email/signUp';
+import { useActionState } from 'react';
+import { Button } from '../ui/button';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
+
 
 const initialState = {
     message: "",

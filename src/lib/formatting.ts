@@ -5,7 +5,7 @@ const currencyFormatter = new Intl.NumberFormat("en-US", {
 });
 
 export function formatCurrency(
-  amount: Decimal,
+  amount: number,
   currencyCode: string,
   locale = "en-ZA"
 ) {

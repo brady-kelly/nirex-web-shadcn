@@ -12,7 +12,6 @@ const initialState = {
         email: undefined,
         username: undefined,
         password: undefined,
-        confirmPassword: undefined,
     },
 }
 

@@ -1,0 +1,4 @@
+- Signup link on login not rendering
+- Intl.NumberFormat not working
+- Migrate sitecontact changes
+- Icon and Image contact items
