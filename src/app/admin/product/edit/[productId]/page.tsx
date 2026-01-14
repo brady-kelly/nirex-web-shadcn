@@ -1,15 +1,19 @@
 import { ProductEditor } from "@/components/product/admin/productEditor";
 import { getAllCategories, getProduct } from "@/lib/products/actions/data";
+import { notFound } from "next/navigation";
+import * as util from "node:util";
 
-export default async function ProductEditPage({ params }: { params: { slug: string } }) {
+export default async function ProductEditPage({ params }: { params: Promise<{ productId: string }> }) {
 
+    const resolved = await params;
+    console.log(util.inspect(resolved, { depth: null }));
+    const productId = resolved.productId;
     const categories = await getAllCategories();
-    const id: number = Number(params.slug);
+    const id: number = Number(productId);
     const prod = await getProduct(id);
     if (!prod)
-        return;
+        notFound();
 
-    //const gridProps = buildProductGridProps(categoryId, catInfo.name, products);
     return (
         <ProductEditor
             productId={id.toString()}
@@ -18,4 +22,5 @@ export default async function ProductEditPage({ params }: { params: { slug: stri
             categories={categories}
             localPrice={prod.localPrice.toString()}
         />
-    )
+    );
+}

@@ -29,7 +29,7 @@ export interface ProductCardProps {
 }
 
 function getEditLink(productid: string) {
-    return `productAdmin/${productid}`;
+    return `admin/product/edit/${productid}`;
 }
 
 export function ProductCard({

@@ -15,21 +15,21 @@ export function FormInput({ name, value, label, type, placeHolder, required }: F
         type: type || "text",
         label: label || camelToTitleCase(name),
         placeHolder: placeHolder || label || name,
-        val: value
+        val: value ?? ""
     };
     const lbl = (<label htmlFor={sp.id}>{sp.label}</label>);
     if (required) {
         return (
             <>
                 {lbl}
-                <input type={sp.type} id={sp.id} name={name} value={sp.val} placeholder={sp.placeHolder} required />
+                <input type={sp.type} id={sp.id} name={name} defaultValue={sp.val} placeholder={sp.placeHolder} required />
             </>
         );
     }
     return (
         <>
             {lbl}
-            <input type={sp.type} id={sp.id} name={name} value={sp.val} placeholder={sp.placeHolder} required />
+            <input type={sp.type} id={sp.id} name={name} defaultValue={sp.val} placeholder={sp.placeHolder} required />
         </>
     );
 }

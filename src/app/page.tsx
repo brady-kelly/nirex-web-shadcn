@@ -1,16 +1,15 @@
 /** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { ProductGrid } from "@/components/product/productGrid";
+import { getUser } from "@/lib/auth/actions/shared/session";
 import { auth } from "@/lib/auth/auth.server";
 import { getAllCategoriesWithProducts } from "@/lib/products/actions/data";
 import { buildProductGridProps } from "@/lib/products/props";
 import { headers } from "next/headers";
 
 export default async function Home() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const user = await getUser();
 
-  const isAdmin = session?.user.role === "ADMIN";
+  const isAdmin = user?.role === "ADMIN";
 
   const categories = await getAllCategoriesWithProducts();
   return (
