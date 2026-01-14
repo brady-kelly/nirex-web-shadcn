@@ -1,4 +1,6 @@
 import { camelToTitleCase } from "@/lib/formatting";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
 export interface FormInputProps {
     name: string;
@@ -17,19 +19,19 @@ export function FormInput({ name, value, label, type, placeHolder, required }: F
         placeHolder: placeHolder || label || name,
         val: value ?? ""
     };
-    const lbl = (<label htmlFor={sp.id}>{sp.label}</label>);
+    const lbl = (<Label htmlFor={sp.id}>{sp.label}</Label>);
     if (required) {
         return (
-            <>
+            <div className="grid grid-cols-2 gap-4">
                 {lbl}
-                <input type={sp.type} id={sp.id} name={name} defaultValue={sp.val} placeholder={sp.placeHolder} required />
-            </>
+                <Input type={sp.type} id={sp.id} name={name} defaultValue={sp.val} placeholder={sp.placeHolder} required />
+            </div>
         );
     }
     return (
-        <>
+        <div className="grid grid-cols-2 gap-4">
             {lbl}
-            <input type={sp.type} id={sp.id} name={name} defaultValue={sp.val} placeholder={sp.placeHolder} required />
-        </>
+            <Input type={sp.type} id={sp.id} name={name} defaultValue={sp.val} placeholder={sp.placeHolder} required />
+        </div>
     );
 }

@@ -23,6 +23,7 @@ export default async function AdminLayout({
     });
 
     if (session?.user.role !== "ADMIN") {
+        console.log("User not admin!");
         redirect("/");
     }
     return (

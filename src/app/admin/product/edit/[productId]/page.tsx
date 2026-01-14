@@ -21,6 +21,9 @@ export default async function ProductEditPage({ params }: { params: Promise<{ pr
             categoryId={prod.categoryId.toString()}
             categories={categories}
             localPrice={prod.localPrice.toString()}
+            workingSize={prod.workingSize ?? undefined}
+            packageSize={prod.packageSize ?? undefined}
+            volume={prod.volume ?? undefined}
         />
     );
 }
