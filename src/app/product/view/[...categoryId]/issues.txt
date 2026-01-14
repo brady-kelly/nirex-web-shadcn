@@ -3,4 +3,3 @@
 - Icon and Image contact items
 - Make NotFound comp.
 - Catch errors on api.auth calls
-- Product card must be clickable.

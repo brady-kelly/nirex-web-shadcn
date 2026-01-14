@@ -10,6 +10,7 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { LinkAsButton } from "../shared/linkAsButton";
+import { ProductImage } from "./productImage";
 
 export interface ProductCardProps {
     productId: string;
@@ -49,14 +50,7 @@ export function ProductCard({
                 {showEdit && (
                     <LinkAsButton href={getEditLink(productId)} text="Edit" />
                 )}
-                <AspectRatio ratio={16 / 9}>
-                    <Image
-                        fill
-                        src={image.src}
-                        alt={image.alt}
-                        className="object-contain transition-transform duration-500 group-hover/usecase4:scale-105"
-                    />
-                </AspectRatio>
+                <ProductImage url={image.src} alt={image.alt} aspect="16/9" />
                 <div className="h-36">
                     <div className="my-6 text-sm">
                         <p className="mb-1">{heading}</p>

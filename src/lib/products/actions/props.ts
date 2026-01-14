@@ -1,8 +1,7 @@
 import type { ProductGridProps } from "@/components/product/productGrid";
 import { formatCurrency } from "@/lib/formatting";
 import type { Product } from "../../../../generated/prisma/client";
-import { getSession } from "@/lib/auth/actions/session";
-import { ProductCardProps } from "@/components/product/productCard";
+import type { ProductCardProps } from "@/components/product/productCard";
 
 function getImageSrcPath(imageFilename?: string): string {
   return `/products/${imageFilename || "generic-printer.jpg"}`;
@@ -34,6 +33,7 @@ export function buildProductGridProps(
   catId: number,
   catName: string,
   products: Product[],
+  catDesc?: string,
   cols?: 2 | 3 | 4,
   isAdmin?: boolean
 ): ProductGridProps {
@@ -44,6 +44,7 @@ export function buildProductGridProps(
   const gridProps: ProductGridProps = {
     id: catId.toString(),
     heading: catName,
+    description: catDesc,
     columns: cols || 3,
     items: cardProps,
   };
