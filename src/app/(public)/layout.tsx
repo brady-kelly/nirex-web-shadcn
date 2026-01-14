@@ -1,7 +1,7 @@
 /** biome-ignore-all assist/source/organizeImports: sfds */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import ContactsBar from "@/components/header/contacts";
 import prisma from "@/lib/prisma";
 import type { SiteContactItem } from "@/lib/config/contactItem";
