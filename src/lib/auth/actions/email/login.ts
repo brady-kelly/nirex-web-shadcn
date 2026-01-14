@@ -4,7 +4,6 @@ import { auth } from "../../auth.server";
 import * as util from "node:util";
 import z from "zod";
 import { loginSchema } from "./schemas";
-import { authClient } from "../../authClient";
 
 export async function loginEmail(initialState: any, formData: FormData) {
   console.log(`Login formdata: ${formData}`);

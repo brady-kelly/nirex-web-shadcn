@@ -4,7 +4,7 @@
 import { auth } from "../../auth.server";
 import z from "zod";
 import { signupSchema } from "./schemas";
-import { authClient } from "../../authClient";
+import * as util from "node:util";
 
 export async function signUpEmail(initialState: any, formData: FormData) {
   console.log(`Signup formdata: ${formData}`);
@@ -30,5 +30,5 @@ export async function signUpEmail(initialState: any, formData: FormData) {
       password: validatedFields.data.password,
     },
   });
-  //console.error(`Signup error: ${error?.code}: ${error?.message}`);
+  console.log(util.inspect(data, { depth: null }));
 }
