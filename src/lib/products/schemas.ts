@@ -11,5 +11,5 @@ export const updateSchema = z.object({
   volume: z.string().optional(),
   packageWeight: z.string().optional(),
   imageFile: z.string().optional(),
-  localPrice: z.number().optional()
-}
+  localPrice: z.number().optional(),
+});

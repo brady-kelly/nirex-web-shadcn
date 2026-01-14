@@ -4,3 +4,4 @@
 - Make NotFound comp.
 - Catch errors on api.auth calls
 - Product card must be clickable.
+- Move auth to proxy.

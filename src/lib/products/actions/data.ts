@@ -11,10 +11,8 @@ export async function getAllCategories() {
 
 export async function getAllCategoriesWithProducts() {
   return prisma.category.findMany({
-    select: {
-      id: true,
-      name: true,
-      desc: true,
+    include: {
+      products: true,
     },
   });
 }
@@ -38,6 +36,14 @@ export async function getProductsForCategory(categoryId: number) {
     },
     include: {
       category: true,
+    },
+  });
+}
+
+export async function getProduct(id: number) {
+  return prisma.product.findUnique({
+    where: {
+      id: id,
     },
   });
 }

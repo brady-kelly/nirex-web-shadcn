@@ -47,6 +47,7 @@ export function buildProductGridProps(
     description: catDesc,
     columns: cols || 3,
     items: cardProps,
+    showEdit: isAdmin,
   };
   return gridProps;
 }

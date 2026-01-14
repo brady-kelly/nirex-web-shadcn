@@ -1,11 +1,10 @@
-import { Field, FieldLabel, FieldLegend, FieldSet } from "@/components/ui/field";
-import { Category } from "../../../../generated/prisma/client";
-import { Input } from "@/components/ui/input";
+"use client";
+
+import type { Category } from "../../../../generated/prisma/client";
 import { useActionState } from "react";
 import { updateProduct } from "@/lib/products/actions/data";
 import { FormInput } from "@/components/shared/formInput";
 import { Button } from "@/components/ui/button";
-import { de } from "zod/v4/locales";
 
 export interface ProductEditorProps {
     productId: string,

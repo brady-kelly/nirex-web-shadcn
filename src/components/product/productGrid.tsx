@@ -8,13 +8,15 @@ export interface ProductGridProps {
     items: ProductCardProps[];
     columns: 2 | 3 | 4;
     className?: string;
+    showEdit?: boolean;
 }
 
 export function ProductGrid({
     heading,
     description,
     items,
-    columns = 3
+    columns = 3,
+    showEdit
 }: ProductGridProps) {
     const getColumnClasses = () => {
         // TODO: Revise this Shit.
