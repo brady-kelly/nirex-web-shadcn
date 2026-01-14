@@ -17,3 +17,15 @@ export function formatCurrency(
   //     currency: currencyCode, // Specifies the currency code
   //   }).format(amount);
 }
+
+export function camelToTitleCase(str: string): string {
+  return (
+    str
+      // 1. Insert a space before all caps
+      .replace(/([A-Z])/g, " $1")
+      // 2. Capitalize the first letter (in case it was lowercase)
+      .replace(/^./, (match) => match.toUpperCase())
+      // 3. Remove leading space if the original string started with a capital
+      .trim()
+  );
+}

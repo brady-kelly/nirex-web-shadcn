@@ -6,7 +6,7 @@ import z from "zod";
 import { signupSchema } from "./schemas";
 import * as util from "node:util";
 
-export async function signUpEmail(initialState: any, formData: FormData) {
+export async function signUpEmail(prevState: any, formData: FormData) {
   console.log(`Signup formdata: ${formData}`);
   const validatedFields = signupSchema.safeParse({
     email: formData.get("email"),

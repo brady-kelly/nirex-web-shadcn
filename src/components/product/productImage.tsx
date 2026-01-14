@@ -1,4 +1,4 @@
-import { ur } from "zod/v4/locales";
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { AspectRatio } from "../ui/aspect-ratio";
 import Image from "next/image";
 
@@ -19,12 +19,13 @@ function getRatio(aspect?: string): number {
 }
 
 export function ProductImage({ url, alt, aspect }: ProductImageProps) {
-    return (<AspectRatio ratio={getRatio(aspect)}>
-        <Image
-            fill
-            src={url}
-            alt={alt || "product image"}
-            className="object-contain transition-transform duration-500 group-hover/usecase4:scale-105"
-        />
-    </AspectRatio>);
+    return (
+        <AspectRatio ratio={getRatio(aspect)}>
+            <Image
+                fill
+                src={url}
+                alt={alt || "product image"}
+                className="object-contain transition-transform duration-500 group-hover/usecase4:scale-105"
+            />
+        </AspectRatio>);
 }

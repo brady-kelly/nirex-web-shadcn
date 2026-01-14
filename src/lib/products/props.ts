@@ -1,6 +1,6 @@
 import type { ProductGridProps } from "@/components/product/productGrid";
 import { formatCurrency } from "@/lib/formatting";
-import type { Product } from "../../../../generated/prisma/client";
+import type { Product } from "../../../generated/prisma/client";
 import type { ProductCardProps } from "@/components/product/productCard";
 
 function getImageSrcPath(imageFilename?: string): string {

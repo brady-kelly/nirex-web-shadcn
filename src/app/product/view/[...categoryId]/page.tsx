@@ -1,6 +1,6 @@
 import { ProductGrid } from "@/components/product/productGrid";
 import { getCategoryInfo, getProductsForCategory } from "@/lib/products/actions/data";
-import { buildProductGridProps } from "@/lib/products/actions/props";
+import { buildProductGridProps } from "@/lib/products/props";
 
 export default async function ProductGridPage({ params }: { params: { slug: string } }) {
     const categoryId: number = Number(params.slug);

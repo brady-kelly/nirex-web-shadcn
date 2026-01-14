@@ -1,7 +1,7 @@
 /** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { ProductGrid } from "@/components/product/productGrid";
 import { getAllCategoriesWithProducts } from "@/lib/products/actions/data";
-import { buildProductGridProps } from "@/lib/products/actions/props";
+import { buildProductGridProps } from "@/lib/products/props";
 
 export default async function Home() {
   const categories = await getAllCategoriesWithProducts();
