@@ -27,7 +27,7 @@ export default function LoginForm() {
             </div>
             <div className="grid w-full max-w-sm items-center gap-3">
                 <label htmlFor="password">User name</label>
-                <input type="password" id="password" placeholder="Password" required />
+                <input type="password" id="password" name="password" placeholder="Password" required />
                 <p aria-live="polite">{state?.errors.password}</p>
             </div>
 

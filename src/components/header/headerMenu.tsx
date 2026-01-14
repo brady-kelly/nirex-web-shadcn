@@ -24,8 +24,6 @@ export function HeaderMenu({ items }: { items: MenuItemDetails[] }) {
     //const isMobile = useIsMobile()
     const isMobile = false;
 
-    console.log(items);
-
     return (
         <NavigationMenu viewport={isMobile}>
             <NavigationMenuList className="flex-wrap">

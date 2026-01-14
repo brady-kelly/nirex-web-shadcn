@@ -28,7 +28,7 @@ export function SignupForm() {
             </div>
             <div className="grid w-full max-w-sm items-center gap-3">
                 <Label htmlFor="username">User name</Label>
-                <Input id="username" name="username" type="text" placeholder="User name" />
+                <Input id="username" name="username" type="text" placeholder="User name" required minLength={2} />
             </div>
             <div className="grid w-full max-w-sm items-center gap-3">
                 <Label htmlFor="password">Password</Label>

@@ -1,10 +1,16 @@
 /** biome-ignore-all assist/source/organizeImports: Later */
+import "server-only";
 import { betterAuth, string } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "../prisma";
 import { nextCookies } from "better-auth/next-js";
 
 export const auth = betterAuth({
+  trustedOrigins: [
+    "http://localhost:3000",
+    // "https://yourdomain.com",
+    // "exp://*", // For Expo/mobile development
+  ],
   emailAndPassword: {
     enabled: true,
   },
