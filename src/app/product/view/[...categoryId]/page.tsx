@@ -1,12 +1,16 @@
 import { ProductGrid } from "@/components/product/productGrid";
-import { getProductsForCategory } from "@/lib/products/actions/data";
+import { getCategoryInfo, getProductsForCategory } from "@/lib/products/actions/data";
 import { buildProductGridProps } from "@/lib/products/actions/props";
 
-export async function ProductGridPage({ params }: { params: { slug: string } }) {
+export default async function ProductGridPage({ params }: { params: { slug: string } }) {
     const categoryId: number = Number(params.slug);
+    const catInfo = await getCategoryInfo(categoryId);
+    if (!catInfo) {
+        return (<div>Not found</div>);
+    }
     const products = await getProductsForCategory(categoryId);
 
-    const gridProps = buildProductGridProps(products);
+    const gridProps = buildProductGridProps(categoryId, catInfo.name, products);
     return (
         <ProductGrid
             key={gridProps.id}
@@ -17,3 +21,4 @@ export async function ProductGridPage({ params }: { params: { slug: string } }) 
             columns={gridProps.columns}
         />
     )
+}

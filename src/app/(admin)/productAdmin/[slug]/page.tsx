@@ -3,7 +3,7 @@ import { getSession } from "@/lib/auth/actions/session";
 import { getAllCategoriesWithProducts } from "@/lib/products/actions/data";
 import { buildProductGridProps } from "@/lib/products/actions/props";
 
-export async function ProductEditPage() {
+export default async function ProductEditPage() {
     const categories = await getAllCategoriesWithProducts();
     const session = await getSession();
     const isAdmin = session?.user.role === "ADMIN";

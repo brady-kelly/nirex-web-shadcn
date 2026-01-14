@@ -5,12 +5,13 @@ const currencyFormatter = new Intl.NumberFormat("en-US", {
 });
 
 export function formatCurrency(
-  amount: number,
+  amount: Decimal,
   currencyCode: string,
   locale = "en-ZA"
 ) {
+  const num = Number(amount);
   // TODO: Fix asap.
-  return `R ${currencyFormatter.format(amount)}`;
+  return `R ${currencyFormatter.format(num)}`;
   //   return new Intl.NumberFormat(locale, {
   //     style: "currency", // Specifies monetary formatting
   //     currency: currencyCode, // Specifies the currency code
