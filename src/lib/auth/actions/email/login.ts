@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "../../auth.server";
+import * as util from "node:util";
 import z from "zod";
 import { loginSchema } from "./schemas";
 import { authClient } from "../../authClient";
@@ -22,9 +23,11 @@ export async function loginEmail(initialState: any, formData: FormData) {
 
   console.log(validatedFields);
 
-  const { data, error } = await authClient.signIn.email({
-    email: validatedFields.data.email,
-    password: validatedFields.data.password,
+  const data = await auth.api.signInEmail({
+    body: {
+      email: validatedFields.data.email,
+      password: validatedFields.data.password,
+    },
   });
-  console.error(`Login error: ${error?.code}: ${error?.message}`);
+  console.log(util.inspect(data, { depth: null }));
 }
