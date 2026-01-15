@@ -14,9 +14,8 @@ export const updateSchema = z.object({
   imageFile: z.string().optional(),
   localPrice: z.number().optional(),
 });
-
-export const editCategorySchema = zfd.formData({
-  id: zfd.numeric(),
+export const editCategorySchema = z.object({
+  id: z.number(),
   name: z
     .string()
     .min(10, "Name must be at least 5 characters.")
@@ -26,6 +25,18 @@ export const editCategorySchema = zfd.formData({
     .min(20, "Description must be at least 20 characters.")
     .max(100, "Description must be at most 100 characters."),
 });
+
+// export const editCategorySchema = zfd.formData({
+//   id: zfd.numeric(),
+//   name: z
+//     .string()
+//     .min(10, "Name must be at least 5 characters.")
+//     .max(30, "Name must be at most 32 characters."),
+//   desc: z
+//     .string()
+//     .min(20, "Description must be at least 20 characters.")
+//     .max(100, "Description must be at most 100 characters."),
+// });
 
 export type EditCategoryFormState = {
   values?: z.infer<typeof editCategorySchema>;

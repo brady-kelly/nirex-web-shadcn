@@ -19,14 +19,23 @@ export async function updateCategory(
   prevState: EditCategoryFormState,
   formData: FormData
 ): Promise<EditCategoryFormState> {
-  //const values = editCategorySchema.parse(formData);
-  const result = editCategorySchema.safeParse(formData);
+  //const data = Object.fromEntries(formData.entries());
+  console.log(util.inspect(formData, { depth: null }));
+  const id = formData.get("id");
+  const values = {
+    id: Number(id),
+    name: formData.get("name") as string,
+    desc: formData.get("desc") as string,
+  };
+  const result = editCategorySchema.safeParse(values);
 
   if (!result.success) {
+    const errs = z.flattenError(result.error).fieldErrors;
+    console.log(util.inspect(errs, { depth: null }));
     return {
       values,
       success: false,
-      errors: z.flattenError(result.error).fieldErrors,
+      errors: errs,
     };
   }
 
