@@ -12,7 +12,7 @@ export async function CategoryEditPage({ params }: { params: Promise<{ categoryI
 
     return (
         <section>
-            <CategoryEditor id={catId} name={cat.name} desc={cat.desc} />
+            <CategoryEditor id={catId} name={cat.name} desc={cat.desc ?? undefined} />
         </section>
     );
 }

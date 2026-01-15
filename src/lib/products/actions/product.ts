@@ -5,8 +5,10 @@ import prisma from "@/lib/prisma";
 import { updateSchema } from "../schemas";
 import z from "zod";
 
-export async function getAllCategories() {
-  return prisma.category.findMany({});
+export async function getAllCategories(nameFilter?: string) {
+  return prisma.category.findMany({
+    where: { name: nameFilter ? { contains: nameFilter } : undefined },
+  });
 }
 
 export async function getAllCategoriesWithProducts() {

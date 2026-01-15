@@ -9,7 +9,7 @@ import { toast } from "sonner"
 export interface CategoryEditorProps {
     id: string,
     name: string,
-    desc?: string | null
+    desc?: string
 }
 
 // const initialState = {
