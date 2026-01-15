@@ -67,7 +67,7 @@ export function CategoryEditor({ id, name, desc }: CategoryEditorProps) {
                             defaultValue={formState.values?.desc}
                             disabled={pending}
                             aria-invalid={!!formState.errors?.desc?.length}
-                            placeholder="Test describing this category"
+                            placeholder="Text describing this category"
                             autoComplete="off"
                         ></TextArea>
                         {formState.errors?.desc && (

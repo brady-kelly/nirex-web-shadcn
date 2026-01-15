@@ -2,7 +2,7 @@
 
 /** biome-ignore-all assist/source/organizeImports: Lazy */
 import prisma from "@/lib/prisma";
-import { updateSchema } from "../schemas";
+import { editproductSchema } from "../schemas";
 import z from "zod";
 
 export async function getAllCategories(nameFilter?: string) {
@@ -52,7 +52,7 @@ export async function getProduct(id: number) {
 
 export async function updateProduct(prevState: any, formData: FormData) {
   const data = Object.fromEntries(formData.entries());
-  const validatedFields = updateSchema.safeParse(data);
+  const validatedFields = editproductSchema.safeParse(data);
 
   if (!validatedFields.success) {
     const errList = z.flattenError(validatedFields.error).fieldErrors;
