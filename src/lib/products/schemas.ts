@@ -32,3 +32,27 @@ export const updateSchema = z.object({
 //   >;
 //   success: boolean;
 // };
+
+export const editCategorySchema = z.object({
+  id: z.string(),
+  name: z
+    .string()
+    .min(10, "Name must be at least 5 characters.")
+    .max(30, "Name must be at most 32 characters."),
+  desc: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+});
+
+export type EditCategoryFormState = {
+  values?: z.infer<typeof editCategorySchema>;
+  errors:
+    | {
+        id?: string[];
+        name?: string[];
+        desc?: string[];
+      }
+    | undefined;
+  //success: boolean;
+};

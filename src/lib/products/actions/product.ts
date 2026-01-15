@@ -59,5 +59,5 @@ export async function updateProduct(prevState: any, formData: FormData) {
     };
   }
 
-  return prisma.product.update({});
+  //return prisma.product.update({});
 }
