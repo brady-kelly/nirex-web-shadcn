@@ -2,11 +2,9 @@
 
 import { updateCategory } from "@/lib/products/actions/category";
 import type { EditCategoryFormState } from "@/lib/products/schemas";
-import router from "next/router";
 import { useActionState, useEffect } from "react";
-import { toast } from "sonner"
 import Form from "next/form"
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea as TextArea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button";
@@ -35,9 +33,7 @@ export function CategoryEditor({ id, name, desc }: CategoryEditorProps) {
 
     useEffect(() => {
         if (formState.success) {
-            toast("Category updated");
             redirect("/admin/category/list");
-            //router.push("/admin/category/list");
         }
     }, [formState.success]);
 
@@ -59,6 +55,9 @@ export function CategoryEditor({ id, name, desc }: CategoryEditorProps) {
                             placeholder="Name of product category"
                             autoComplete="off"
                         />
+                        {formState.errors?.name && (
+                            <FieldError>{formState.errors.name[0]}</FieldError>
+                        )}
                     </Field>
                     <Field data-invalid={!!formState.errors?.desc?.length}>
                         <FieldLabel htmlFor="desc">Description</FieldLabel>
@@ -71,6 +70,9 @@ export function CategoryEditor({ id, name, desc }: CategoryEditorProps) {
                             placeholder="Test describing this category"
                             autoComplete="off"
                         ></TextArea>
+                        {formState.errors?.desc && (
+                            <FieldError>{formState.errors.desc[0]}</FieldError>
+                        )}
                     </Field>
                 </FieldGroup>
                 <Field orientation="horizontal">
