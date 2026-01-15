@@ -2,7 +2,7 @@
 import { camelToTitleCase } from "@/lib/formatting";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { Field, FieldLabel } from "../ui/field";
+import { Field, FieldContent, FieldError, FieldLabel } from "../ui/field";
 
 export interface FormInputProps {
     name: string;
@@ -35,21 +35,28 @@ export function FormInputField({ name, value, label, type, placeHolder, required
         invalid: !!form.errors?.length
     };
     return (
-        <div className="grid grid-cols-2 gap-4">
-            <Field data-invalid={sp.invalid}>
-                <FieldLabel htmlFor={sp.id}>{label}</FieldLabel>
-                <Input
-                    type={sp.type}
-                    id={sp.id}
-                    name={name}
-                    defaultValue={sp.val}
-                    placeholder={sp.placeHolder}
-                    required={required}
-                    disabled={disabled}
-                    aria-invalid={sp.invalid}
-                    autoComplete={autoComplete}
-                />
+        <div>
+            <Field data-invalid={sp.invalid} orientation="horizontal" className="grid grid-cols-[120px_450px] gap-4">
+                <FieldContent>
+                    <FieldLabel htmlFor={sp.id}>{sp.label}</FieldLabel>
+                </FieldContent>
+                <FieldContent>
+                    <Input
+                        type={sp.type}
+                        id={sp.id}
+                        name={name}
+                        defaultValue={sp.val}
+                        placeholder={sp.placeHolder}
+                        required={required}
+                        disabled={disabled}
+                        aria-invalid={sp.invalid}
+                        autoComplete={autoComplete}
+                    />
+                    {sp.invalid && (
+                        <FieldError>{formState.errors.name[0]}</FieldError>
+                    )}
+                </FieldContent>
             </Field>
-        </div>
+        </div >
     );
 }
