@@ -1,4 +1,5 @@
 import z from "zod";
+import { zfd } from "zod-form-data";
 
 export const updateSchema = z.object({
   id: z.string(),
@@ -14,27 +15,8 @@ export const updateSchema = z.object({
   localPrice: z.number().optional(),
 });
 
-// export const editCategorySchema = z.object({
-//   title: z
-//     .string()
-//     .min(5, "Bug title must be at least 5 characters.")
-//     .max(32, "Bug title must be at most 32 characters."),
-//   description: z
-//     .string()
-//     .min(20, "Description must be at least 20 characters.")
-//     .max(100, "Description must be at most 100 characters."),
-// });
-
-// export type EditCategoryFormState = {
-//   values?: z.infer<typeof editCategorySchema>;
-//   errors: null | Partial<
-//     Record<keyof z.infer<typeof editCategorySchema>, string[]>
-//   >;
-//   success: boolean;
-// };
-
-export const editCategorySchema = z.object({
-  id: z.string(),
+export const editCategorySchema = zfd.formData({
+  id: zfd.numeric(),
   name: z
     .string()
     .min(10, "Name must be at least 5 characters.")

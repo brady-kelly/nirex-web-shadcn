@@ -14,7 +14,7 @@ export default async function CategoryEditPage({ params }: { params: Promise<{ c
 
     return (
         <section>
-            <CategoryEditor id={catId} name={cat.name} desc={cat.desc ?? undefined} />
+            <CategoryEditor id={id} name={cat.name} desc={cat.desc ?? undefined} />
         </section>
     );
 }

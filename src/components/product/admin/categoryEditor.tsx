@@ -5,43 +5,81 @@ import type { EditCategoryFormState } from "@/lib/products/schemas";
 import router from "next/router";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner"
+import Form from "next/form"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Textarea as TextArea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
+import { redirect } from "next/navigation";
 
 export interface CategoryEditorProps {
-    id: string,
+    id: number,
     name: string,
     desc?: string
 }
 
-// const initialState = {
-//     values: {
-//         title: "",
-//         description: "",
-//     },
-//     errors: null,
-//     success: false,
-// }
-
-const initialState: EditCategoryFormState = {
-    errors: {
-    },
-    success: false,
-}
-
-
 export function CategoryEditor({ id, name, desc }: CategoryEditorProps) {
+    const initialState: EditCategoryFormState = {
+        values: {
+            id: id,
+            name: name,
+            desc: desc ?? "",
+        },
+        errors: {
+        },
+        success: false,
+    }
     const [formState, formAction, pending] = useActionState<EditCategoryFormState, FormData>
         (updateCategory, initialState);
 
     useEffect(() => {
         if (formState.success) {
             toast("Category updated");
-            router.push("/admin/category/list");
+            redirect("/admin/category/list");
+            //router.push("/admin/category/list");
         }
     }, [formState.success]);
 
+    const formId = "catEditForm";
     return (
         <div className="w-full">
             <h1 className="pb-3">Edit Category: {name}</h1>
+            <Form action={formAction} id={formId}>
+                <FieldGroup>
+                    <Input id="id" name="id" type="hidden" defaultValue={formState.values?.id} readOnly></Input>
+                    <Field data-invalid={!!formState.errors?.name?.length}>
+                        <FieldLabel htmlFor="name">Name</FieldLabel>
+                        <Input
+                            id="name"
+                            name="name"
+                            defaultValue={formState.values?.name}
+                            disabled={pending}
+                            aria-invalid={!!formState.errors?.name?.length}
+                            placeholder="Name of product category"
+                            autoComplete="off"
+                        />
+                    </Field>
+                    <Field data-invalid={!!formState.errors?.desc?.length}>
+                        <FieldLabel htmlFor="desc">Description</FieldLabel>
+                        <TextArea
+                            id="desc"
+                            name="desc"
+                            defaultValue={formState.values?.desc}
+                            disabled={pending}
+                            aria-invalid={!!formState.errors?.desc?.length}
+                            placeholder="Test describing this category"
+                            autoComplete="off"
+                        ></TextArea>
+                    </Field>
+                </FieldGroup>
+                <Field orientation="horizontal">
+                    <Button type="submit" disabled={pending} form={formId}>
+                        {pending && <Spinner />}
+                        Save
+                    </Button>
+                </Field>
+            </Form>
         </div>
     );
 }

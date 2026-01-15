@@ -1,9 +1,10 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import type { Category } from "../../../../generated/prisma/client";
-import { EditCategoryFormState, editCategorySchema } from "../schemas";
-import z, { success } from "zod";
+import { type EditCategoryFormState, editCategorySchema } from "../schemas";
+import z from "zod";
+import * as util from "node:util";
+import { FormMessage } from "@/components/ui/form";
 
 export async function getCategory(id: number) {
   return prisma.category.findUnique({
@@ -14,30 +15,34 @@ export async function getCategory(id: number) {
 }
 
 export async function updateCategory(
+  // biome-ignore lint/correctness/noUnusedFunctionParameters: <explanation>
   prevState: EditCategoryFormState,
   formData: FormData
 ): Promise<EditCategoryFormState> {
-  const data = Object.fromEntries(formData.entries());
-  const validatedFields = editCategorySchema.safeParse(data);
+  //const values = editCategorySchema.parse(formData);
+  const result = editCategorySchema.safeParse(formData);
 
-  if (!validatedFields.success) {
-    const errList = z.flattenError(validatedFields.error).fieldErrors;
+  if (!result.success) {
     return {
-      errors: errList,
+      values,
       success: false,
+      errors: z.flattenError(result.error).fieldErrors,
     };
   }
+
+  console.log(util.inspect(result.data, { depth: null }));
+  await prisma.category.update({
+    where: {
+      id: result.data.id,
+    },
+    data: {
+      name: result.data.name,
+      desc: result.data.desc,
+    },
+  });
+
   return {
-    errors: undefined, // No errors on success
+    errors: undefined,
     success: true,
   };
-  //   await prisma.category.update({
-  //     where: {
-  //       id: 1,
-  //     },
-  //     data: {
-  //       name: "name",
-  //       desc: "desc",
-  //     },
-  //   });
 }
