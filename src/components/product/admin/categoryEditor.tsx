@@ -2,7 +2,9 @@
 
 import { updateCategory } from "@/lib/products/actions/category";
 import type { EditCategoryFormState } from "@/lib/products/schemas";
-import { useActionState } from "react";
+import router from "next/router";
+import { useActionState, useEffect } from "react";
+import { toast } from "sonner"
 
 export interface CategoryEditorProps {
     id: string,
@@ -21,17 +23,6 @@ export interface CategoryEditorProps {
 
 const initialState: EditCategoryFormState = {
     errors: {
-        // id: undefined,
-        // categoryId: undefined,
-        // name: undefined,
-        // variant: undefined,
-        // desc: undefined,
-        // workingSize: undefined,
-        // packageSize: undefined,
-        // volume: undefined,
-        // packageWeight: undefined,
-        // imageFile: undefined,
-        // localPrice: undefined
     },
     success: false,
 }
@@ -40,6 +31,14 @@ const initialState: EditCategoryFormState = {
 export function CategoryEditor({ id, name, desc }: CategoryEditorProps) {
     const [formState, formAction, pending] = useActionState<EditCategoryFormState, FormData>
         (updateCategory, initialState);
+
+    useEffect(() => {
+        if (formState.success) {
+            toast("Category updated");
+            router.push("/admin/category/list");
+        }
+    }, [formState.success]);
+
     return (
         <div className="w-full max-w-md">
             <h1 className="pb-3">Edit Category: {name}</h1>
