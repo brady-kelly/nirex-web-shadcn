@@ -1,4 +1,3 @@
-- Intl.NumberFormat not working
 - Get site contacts from db.
 - Make NotFound comp.
 - Catch errors on api.auth calls

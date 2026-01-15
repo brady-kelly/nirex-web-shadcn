@@ -14,6 +14,32 @@ export async function getCategory(id: number) {
   });
 }
 
+export async function getAllCategories(nameFilter?: string) {
+  return prisma.category.findMany({
+    where: { name: nameFilter ? { contains: nameFilter } : undefined },
+  });
+}
+
+export async function getAllCategoriesWithProducts() {
+  return prisma.category.findMany({
+    include: {
+      products: true,
+    },
+  });
+}
+
+export async function getCategoryInfo(catId: number) {
+  return prisma.category.findUnique({
+    where: {
+      id: catId,
+    },
+    select: {
+      name: true,
+      desc: true,
+    },
+  });
+}
+
 export async function updateCategory(
   prevState: EditCategoryFormState,
   formData: FormData

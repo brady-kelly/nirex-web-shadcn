@@ -1,30 +1,61 @@
 import z from "zod";
 import { zfd } from "zod-form-data";
+import { zDesc, zName } from "../sharedSchemas";
+import { Z_BEST_COMPRESSION } from "zlib";
 
-export const editproductSchema = z.object({
-  id: z.string(),
-  categoryId: z.string(),
-  name: z.string(),
-  variant: z.string().optional(),
-  desc: z.string().optional(),
-  workingSize: z.string().optional(),
-  packageSize: z.string().optional(),
-  volume: z.string().optional(),
-  packageWeight: z.string().optional(),
-  imageFile: z.string().optional(),
-  localPrice: z.number().optional(),
+const attMinLen = 10;
+const attMaxLen = 50;
+const attMinText = `Attribute must be at least ${attMinLen} characters.`;
+const attMaxText = `Attribute must be at least ${attMaxLen} characters.`;
+
+const zAtt = () =>
+  z.string().min(attMinLen, attMinText).max(attMaxLen, attMaxText);
+
+export const editproductSchema = zfd.formData({
+  id: zfd.numeric(),
+  categoryId: zfd.numeric(),
+  name: zfd.text(zName()),
+  variant: zfd.text().optional(),
+  desc: zfd.text(zDesc()).optional(),
+  workingSize: zfd.text(zAtt()).optional(),
+  packageSize: zfd.text(zAtt()).optional(),
+  volume: zfd.text(zAtt()).optional(),
+  packageWeight: zfd.text(zAtt()).optional(),
+  imageFile: zfd
+    .text(
+      z
+        .string()
+        .min(2, "Filename must be at least 2 characters")
+        .max(255, "Filename must be at most 255 characters")
+    )
+    .optional(),
+  localPrice: zfd.numeric(),
 });
+
+export type EditProductFormState = {
+  values?: z.infer<typeof editproductSchema>;
+  errors:
+    | {
+        id?: string[];
+        categoryId?: string[];
+        name?: string[];
+        variant?: string[];
+        desc?: string[];
+        workingSize?: string[];
+        packageSize?: string[];
+        volume?: string[];
+        packageWeight?: string[];
+        imageFile?: string[];
+        localprice?: string[];
+      }
+    | undefined;
+  success: boolean;
+};
 
 export const editCategorySchema = zfd.formData({
   id: zfd.numeric(),
-  name: z
-    .string()
-    .min(10, "Name must be at least 5 characters.")
-    .max(30, "Name must be at most 32 characters."),
-  desc: z
-    .string()
-    .min(20, "Description must be at least 20 characters.")
-    .max(100, "Description must be at most 100 characters."),
+  name: zfd.text(zName()),
+  desc: zfd.text(zDesc()).optional(),
 });
 
 export type EditCategoryFormState = {
