@@ -49,10 +49,8 @@ export async function getProduct(id: number) {
 }
 
 export async function updateProduct(prevState: any, formData: FormData) {
-  const validatedFields = updateSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
+  const data = Object.fromEntries(formData.entries());
+  const validatedFields = updateSchema.safeParse(data);
 
   if (!validatedFields.success) {
     const errList = z.flattenError(validatedFields.error).fieldErrors;

@@ -1,10 +1,10 @@
-- Signup link on login not rendering
 - Intl.NumberFormat not working
 - Icon and Image contact items
 - Make NotFound comp.
 - Catch errors on api.auth calls
-- Product card must be clickable.
+- whole product card must be clickable.
 - Move auth to proxy.
 - Dynamic set of -brand css vars.
 - Shared root layout.
-- In login, redirect to home if already logged in.
+- In login, redirect to home if already logged in
+- In admin, redirect to login after logout.

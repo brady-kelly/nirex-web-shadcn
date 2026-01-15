@@ -1,6 +1,6 @@
 import { ProductGrid } from "@/components/product/productGrid";
 import { getUser } from "@/lib/auth/actions/shared/session";
-import { getCategoryInfo, getProductsForCategory } from "@/lib/products/actions/data";
+import { getCategoryInfo, getProductsForCategory } from "@/lib/products/actions/product";
 import { buildProductGridProps } from "@/lib/products/props";
 
 export default async function ProductGridPage({ params }: { params: { slug: string } }) {

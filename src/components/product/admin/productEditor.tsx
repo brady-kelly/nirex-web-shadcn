@@ -2,7 +2,7 @@
 
 import type { Category } from "../../../../generated/prisma/client";
 import { useActionState } from "react";
-import { updateProduct } from "@/lib/products/actions/data";
+import { updateProduct } from "@/lib/products/actions/product";
 import { FormInput } from "@/components/shared/formInput";
 import { Button } from "@/components/ui/button";
 import { FieldSet } from "@/components/shared/fieldSet";
@@ -25,17 +25,17 @@ export interface ProductEditorProps {
 const initialState = {
     message: "",
     errors: {
-        id: undefined,
-        categoryId: undefined,
-        name: undefined,
-        variant: undefined,
-        desc: undefined,
-        workingSize: undefined,
-        packageSize: undefined,
-        volume: undefined,
-        packageWeight: undefined,
-        imageFile: undefined,
-        localPrice: undefined
+        // id: undefined,
+        // categoryId: undefined,
+        // name: undefined,
+        // variant: undefined,
+        // desc: undefined,
+        // workingSize: undefined,
+        // packageSize: undefined,
+        // volume: undefined,
+        // packageWeight: undefined,
+        // imageFile: undefined,
+        // localPrice: undefined
     },
 }
 

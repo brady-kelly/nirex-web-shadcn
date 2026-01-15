@@ -2,7 +2,7 @@
 import { ProductGrid } from "@/components/product/productGrid";
 import { getUser } from "@/lib/auth/actions/shared/session";
 import { auth } from "@/lib/auth/auth.server";
-import { getAllCategoriesWithProducts } from "@/lib/products/actions/data";
+import { getAllCategoriesWithProducts } from "@/lib/products/actions/product";
 import { buildProductGridProps } from "@/lib/products/props";
 import { headers } from "next/headers";
 

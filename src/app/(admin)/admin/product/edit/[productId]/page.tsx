@@ -1,5 +1,5 @@
 import { ProductEditor } from "@/components/product/admin/productEditor";
-import { getAllCategories, getProduct } from "@/lib/products/actions/data";
+import { getAllCategories, getProduct } from "@/lib/products/actions/product";
 import { notFound } from "next/navigation";
 import * as util from "node:util";
 
