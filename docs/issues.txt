@@ -8,4 +8,4 @@
 - Shared root layout.
 - In login, redirect to home if already logged in
 - In admin, redirect to login after logout.
-- Tailwind fallbacks: --color-primary: var(--brand-primary, #3c5387)
+- All forms standard
