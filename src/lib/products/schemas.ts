@@ -54,5 +54,5 @@ export type EditCategoryFormState = {
         desc?: string[];
       }
     | undefined;
-  //success: boolean;
+  success: boolean;
 };

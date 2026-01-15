@@ -19,8 +19,7 @@ export interface CategoryEditorProps {
 //     success: false,
 // }
 
-const initialState = {
-    message: "",
+const initialState: EditCategoryFormState = {
     errors: {
         // id: undefined,
         // categoryId: undefined,
@@ -34,6 +33,7 @@ const initialState = {
         // imageFile: undefined,
         // localPrice: undefined
     },
+    success: false,
 }
 
 
