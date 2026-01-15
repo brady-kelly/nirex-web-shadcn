@@ -4,6 +4,7 @@ import { auth } from "../../auth.server";
 import * as util from "node:util";
 import z from "zod";
 import { loginSchema } from "./schemas";
+import { redirect } from "next/navigation";
 
 export async function loginEmail(prevState: any, formData: FormData) {
   const validatedFields = loginSchema.safeParse({
@@ -24,5 +25,7 @@ export async function loginEmail(prevState: any, formData: FormData) {
       password: validatedFields.data.password,
     },
   });
-  console.log(util.inspect(data, { depth: null }));
+  //console.log(util.inspect(data, { depth: null }));
+
+  redirect("/");
 }
