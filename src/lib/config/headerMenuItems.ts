@@ -20,10 +20,6 @@ export const adminMenuItems: MenuItemDetails[] = [
       },
     ],
   },
-  {
-    text: "Log in",
-    url: "/login",
-  },
 ];
 
 export const headerMenuItems: MenuItemDetails[] = [
@@ -65,9 +61,5 @@ export const headerMenuItems: MenuItemDetails[] = [
         text: "Need Support?",
       },
     ],
-  },
-  {
-    text: "Log in",
-    url: "/login",
   },
 ];

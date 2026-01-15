@@ -7,6 +7,8 @@ import prisma from "@/lib/prisma";
 import type { SiteContactItem } from "@/lib/config/contactItem";
 import { getHeaderMenuItems } from "@/lib/config/actions/siteConfig";
 import { SiteHeader } from "@/components/header/siteHeader";
+import { getSession } from "@/lib/auth/actions/session";
+import { cookies } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +31,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
+  const cookieStore = await cookies();
+  const session = await getSession();
+  console.log(JSON.stringify(session));
   const headerMenuItems = await getHeaderMenuItems();
-  const menuProps = { items: headerMenuItems, inCartCount: 0 };
+  const headerProps = { items: headerMenuItems, inCartCount: 0, loggedIn: !!session };
   const contacts = await prisma.siteContact.findMany() as SiteContactItem[];
 
   return (
@@ -39,7 +44,7 @@ export default async function RootLayout({
         className={`bg-surface dark:bg-primary text-black dark:text-sur ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContactsBar {...contacts} />
-        <SiteHeader {...menuProps} />
+        <SiteHeader {...headerProps} />
         <main>
           {children}
         </main>

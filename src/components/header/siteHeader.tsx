@@ -13,6 +13,7 @@ import { SearchButton } from "./searchButton";
 export interface SiteHeaderProps {
     items: MenuItemDetails[];
     inCartCount: number;
+    loggedIn: boolean
 }
 
 export function SiteHeader(props: SiteHeaderProps) {
@@ -22,7 +23,7 @@ export function SiteHeader(props: SiteHeaderProps) {
                 <HeaderLogo />
             </div>
             <div className="pt-10">
-                <PublicHeaderMenu items={props.items} />
+                <PublicHeaderMenu items={props.items} loggedIn={props.loggedIn} />
             </div>
             <div className="order-last flex flex-row justify-between pt-10">
                 <CartButton inCartCount={props.inCartCount} />

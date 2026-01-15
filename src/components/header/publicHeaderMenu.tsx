@@ -14,12 +14,19 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import type { MenuItemDetails } from "../shared/menuItem"
+import { LogoContactItem } from "../shared/logoContactItem";
+import { LoginMenuLink } from "../shared/loginMenuLink";
 
 function getWorkingUrl(url?: string): string {
     return url || "#0";
 }
 
-export function PublicHeaderMenu({ items }: { items: MenuItemDetails[] }) {
+export interface PublicHeaderMenuProps {
+    items: MenuItemDetails[];
+    loggedIn: boolean;
+}
+
+export function PublicHeaderMenu({ items, loggedIn }: PublicHeaderMenuProps) {
     // TODO: Find hook
     //const isMobile = useIsMobile()
     const isMobile = false;
@@ -31,7 +38,7 @@ export function PublicHeaderMenu({ items }: { items: MenuItemDetails[] }) {
                     <NavigationMenuItem key={crypto.randomUUID()}>
                         {item.subItems?.length ? (
                             <>
-                                <NavigationMenuTrigger>{item.text}</NavigationMenuTrigger>
+                                <NavigationMenuTrigger className="bg-surface">{item.text}</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="grid w-50 gap-4">
                                         {item.subItems.map((item) => (
@@ -42,12 +49,13 @@ export function PublicHeaderMenu({ items }: { items: MenuItemDetails[] }) {
                                     </ul>
                                 </NavigationMenuContent>
                             </>) : (
-                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                            <NavigationMenuLink asChild>
                                 <Link href={getWorkingUrl(item.url)}>{item.text}</Link>
                             </NavigationMenuLink>
                         )}
                     </NavigationMenuItem>
                 ))}
+                <LoginMenuLink loggedIn={loggedIn} isAdmin={false} />
             </NavigationMenuList>
         </NavigationMenu>
     )

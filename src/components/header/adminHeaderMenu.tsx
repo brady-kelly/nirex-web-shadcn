@@ -31,7 +31,7 @@ export function AdminHeaderMenu({ items }: { items: MenuItemDetails[] }) {
                     <NavigationMenuItem key={crypto.randomUUID()}>
                         {item.subItems?.length ? (
                             <>
-                                <NavigationMenuTrigger>{item.text}</NavigationMenuTrigger>
+                                <NavigationMenuTrigger className="bg-surface">{item.text}</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="grid w-50 gap-4">
                                         {item.subItems.map((item) => (
@@ -42,7 +42,7 @@ export function AdminHeaderMenu({ items }: { items: MenuItemDetails[] }) {
                                     </ul>
                                 </NavigationMenuContent>
                             </>) : (
-                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                            <NavigationMenuLink asChild>
                                 <Link href={getWorkingUrl(item.url)}>{item.text}</Link>
                             </NavigationMenuLink>
                         )}
