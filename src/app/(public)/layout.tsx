@@ -8,7 +8,7 @@ import type { SiteContactItem } from "@/lib/config/contactItem";
 import { getHeaderMenuItems } from "@/lib/config/actions/siteConfig";
 import { SiteHeader } from "@/components/header/siteHeader";
 import { getSession } from "@/lib/auth/actions/session";
-import { cookies } from "next/headers";
+//import { cookies } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +31,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const cookieStore = await cookies();
+  //const cookieStore = await cookies();
   const session = await getSession();
   console.log(JSON.stringify(session));
   const headerMenuItems = await getHeaderMenuItems();

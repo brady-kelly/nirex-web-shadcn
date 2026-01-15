@@ -1,4 +1,4 @@
-// "use server";
+"use server";
 
 import prisma from "@/lib/prisma";
 import type { Category } from "../../../../generated/prisma/client";
@@ -24,11 +24,12 @@ export async function updateCategory(
     const errList = z.flattenError(validatedFields.error).fieldErrors;
     return {
       errors: errList,
-      //success: false,
+      success: false,
     };
   }
   return {
     errors: undefined, // No errors on success
+    success: true,
   };
   //   await prisma.category.update({
   //     where: {

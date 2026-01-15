@@ -42,7 +42,7 @@ const initialState = {
 export function ProductEditor({ productId, name, variant, desc, workingSize, packageSize, volume, packageWeight, localPrice, categories, categoryId }: ProductEditorProps) {
     const [state, formAction, pending] = useActionState(updateProduct, initialState)
     return (
-        <div className="w-full max-w-md">
+        <div className="w-full">
             <h1 className="pb-3">Edit Product: {name}</h1>
             <form action={formAction}>
                 <FieldSet heading="Product Properties">

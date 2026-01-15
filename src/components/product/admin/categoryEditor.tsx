@@ -40,7 +40,7 @@ export function CategoryEditor({ id, name, desc }: CategoryEditorProps) {
     }, [formState.success]);
 
     return (
-        <div className="w-full max-w-md">
+        <div className="w-full">
             <h1 className="pb-3">Edit Category: {name}</h1>
         </div>
     );

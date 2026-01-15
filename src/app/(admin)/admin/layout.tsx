@@ -22,11 +22,11 @@ export default async function AdminLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const user = await getUser();
-    if (user?.role !== "ADMIN") {
-        console.log("User not admin!");
-        redirect("/");
-    }
+    // const user = await getUser();
+    // if (user?.role !== "ADMIN") {
+    //     console.log("User not admin!");
+    //     redirect("/");
+    // }
 
     const adminMenuItems = await getAdminMenuItems();
     const menuProps = { items: adminMenuItems };
