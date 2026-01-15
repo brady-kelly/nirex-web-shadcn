@@ -16,6 +16,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import type { Category } from "../../../generated/prisma/client";
+import Link from "next/link";
 
 export const columns: ColumnDef<Category>[] = [
     {
@@ -30,6 +31,20 @@ export const columns: ColumnDef<Category>[] = [
         accessorKey: "desc",
         header: "Description",
     },
+    {
+        id: "actions",
+        cell: ({ row }) => {
+            const cat = row.original;
+            const del = `/admin/category/del/${cat.id}`;
+            const edit = `/admin/category/edit/${cat.id}`;
+            return (
+                <div className="inline-grid grid-cols-2 gap-2">
+                    <span><Link href={del}>Delete</Link></span>
+                    <span><Link href={edit}>Edit</Link></span>
+                </div>
+            );
+        }
+    }
 ]
 
 export interface CategoryListProps<TData, TValue> {
