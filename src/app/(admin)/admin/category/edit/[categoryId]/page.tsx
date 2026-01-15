@@ -1,5 +1,6 @@
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { CategoryEditor } from "@/components/product/admin/categoryEditor";
-import { getCategoryInfo } from "@/lib/products/actions/product";
+import { getCategoryInfo } from "@/lib/products/actions/category";
 import { notFound } from "next/navigation";
 //import * as util from "node:util";
 

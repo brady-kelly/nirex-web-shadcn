@@ -1,7 +1,6 @@
 import z from "zod";
 import { zfd } from "zod-form-data";
-import { zDesc, zName } from "../sharedSchemas";
-import { Z_BEST_COMPRESSION } from "zlib";
+import { zDesc, zName } from "../../sharedSchemas";
 
 const attMinLen = 10;
 const attMaxLen = 50;
@@ -38,33 +37,6 @@ export type EditProductFormState = {
     | {
         id?: string[];
         categoryId?: string[];
-        name?: string[];
-        variant?: string[];
-        desc?: string[];
-        workingSize?: string[];
-        packageSize?: string[];
-        volume?: string[];
-        packageWeight?: string[];
-        imageFile?: string[];
-        localprice?: string[];
-      }
-    | undefined;
-  success: boolean;
-};
-
-export const editCategorySchema = zfd.formData({
-  id: zfd.numeric(),
-  name: zfd.text(zName()),
-  desc: zfd.text(zDesc()).optional(),
-});
-
-export type EditCategoryFormState = {
-  values?: z.infer<typeof editCategorySchema>;
-  errors:
-    | {
-        id?: string[];
-        name?: string[];
-        desc?: string[];
       }
     | undefined;
   success: boolean;

@@ -3,7 +3,10 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { type EditProductFormState, editproductSchema } from "../schemas";
+import {
+  type EditProductFormState,
+  editproductSchema,
+} from "../schemas/product";
 import z from "zod";
 
 export async function getProductsForCategory(categoryId: number) {

@@ -1,5 +1,5 @@
 import { CategoryList, columns } from "@/components/product/categoryList";
-import { getAllCategories } from "@/lib/products/actions/product";
+import { getAllCategories } from "@/lib/products/actions/category";
 
 export default async function CategoryListPage() {
     const categories = await getAllCategories();

@@ -1,7 +1,7 @@
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 "use client";
 
 import { updateCategory } from "@/lib/products/actions/category";
-import type { EditCategoryFormState } from "@/lib/products/schemas";
 import { useActionState, useEffect } from "react";
 import Form from "next/form"
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
@@ -10,6 +10,7 @@ import { Textarea as TextArea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { redirect } from "next/navigation";
+import type { EditCategoryFormState } from "@/lib/products/schemas/category";
 
 export interface CategoryEditorProps {
     id: number,

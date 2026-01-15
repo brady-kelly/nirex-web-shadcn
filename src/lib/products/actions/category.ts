@@ -3,8 +3,11 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { type EditCategoryFormState, editCategorySchema } from "../schemas";
 import z from "zod";
+import {
+  type EditCategoryFormState,
+  editCategorySchema,
+} from "../schemas/category";
 
 export async function getCategory(id: number) {
   return prisma.category.findUnique({
