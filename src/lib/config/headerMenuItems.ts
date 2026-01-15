@@ -1,5 +1,31 @@
 import type { MenuItemDetails } from "@/components/shared/menuItem";
 
+export const adminMenuItems: MenuItemDetails[] = [
+  {
+    text: "Website",
+    subItems: [
+      {
+        text: "Contact Details",
+      },
+    ],
+  },
+  {
+    text: "Products",
+    subItems: [
+      {
+        text: "Products",
+      },
+      {
+        text: "Categories",
+      },
+    ],
+  },
+  {
+    text: "Log in",
+    url: "/login",
+  },
+];
+
 export const headerMenuItems: MenuItemDetails[] = [
   {
     text: "About",

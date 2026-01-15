@@ -36,11 +36,13 @@ export default async function RootLayout({
   return (
     <html lang="en" >
       <body
-        className={`bg-surface dark:bg-primary text-black dark:text-surface ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`bg-surface dark:bg-primary text-black dark:text-sur ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContactsBar {...contacts} />
         <SiteHeader {...menuProps} />
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html >
   );

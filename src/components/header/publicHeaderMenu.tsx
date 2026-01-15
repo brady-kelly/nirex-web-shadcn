@@ -19,7 +19,7 @@ function getWorkingUrl(url?: string): string {
     return url || "#0";
 }
 
-export function HeaderMenu({ items }: { items: MenuItemDetails[] }) {
+export function PublicHeaderMenu({ items }: { items: MenuItemDetails[] }) {
     // TODO: Find hook
     //const isMobile = useIsMobile()
     const isMobile = false;

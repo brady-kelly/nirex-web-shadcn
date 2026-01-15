@@ -6,7 +6,7 @@
 
 import HeaderLogo from "./headerLogo";
 import type { MenuItemDetails } from "../shared/menuItem";
-import { HeaderMenu } from "./headerMenu";
+import { PublicHeaderMenu } from "./publicHeaderMenu";
 import { CartButton } from "./cartButton";
 import { SearchButton } from "./searchButton";
 
@@ -22,7 +22,7 @@ export function SiteHeader(props: SiteHeaderProps) {
                 <HeaderLogo />
             </div>
             <div className="pt-10">
-                <HeaderMenu items={props.items} />
+                <PublicHeaderMenu items={props.items} />
             </div>
             <div className="order-last flex flex-row justify-between pt-10">
                 <CartButton inCartCount={props.inCartCount} />

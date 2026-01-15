@@ -1,6 +1,6 @@
 /** biome-ignore-all assist/source/organizeImports: <explanation> */
 import type { MenuItemDetails } from "@/components/shared/menuItem";
-import { headerMenuItems } from "@/lib/config/headerMenuItems";
+import { adminMenuItems, headerMenuItems } from "@/lib/config/headerMenuItems";
 
 export async function getHeaderMenuItems(): Promise<MenuItemDetails[]> {
   // TODO: Fix reading menu items.
@@ -16,4 +16,8 @@ export async function getHeaderMenuItems(): Promise<MenuItemDetails[]> {
   //   headerMenuJson?.headerMenuItems as unknown as MenuItemDetails[];
 
   return headerMenuItems;
+}
+
+export async function getAdminMenuItems() {
+  return adminMenuItems;
 }
