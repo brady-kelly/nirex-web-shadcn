@@ -1,5 +1,5 @@
 - Intl.NumberFormat not working
-- Icon and Image contact items
+- Get site contacts from db.
 - Make NotFound comp.
 - Catch errors on api.auth calls
 - whole product card must be clickable.
@@ -8,3 +8,4 @@
 - Shared root layout.
 - In login, redirect to home if already logged in
 - In admin, redirect to login after logout.
+- Tailwind fallbacks: --color-primary: var(--brand-primary, #3c5387)

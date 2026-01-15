@@ -14,7 +14,7 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import type { MenuItemDetails } from "../shared/menuItem"
-import { LogoContactItem } from "../shared/logoContactItem";
+import { ImageContactItem } from "../shared/imageContactItem";
 import { LoginMenuLink } from "../shared/loginMenuLink";
 
 function getWorkingUrl(url?: string): string {

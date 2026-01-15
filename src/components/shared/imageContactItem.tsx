@@ -1,13 +1,13 @@
 import { Item, ItemMedia } from "../ui/item";
 import Image from "next/image";
 
-export interface LogoContactItemProps {
+export interface ImageContactItemProps {
     url: string,
     type: string,
     logoSrc: string,
 }
 
-export function LogoContactItem({ url, type, logoSrc }: LogoContactItemProps) {
+export function ImageContactItem({ url, type, logoSrc }: ImageContactItemProps) {
     const title = `${type} Link`;
     const alt = `${type} Logo`;
     const src = `/icons/${logoSrc}`;

@@ -13,7 +13,7 @@ import {
 } from "../ui/item";
 import type { SiteContactItem } from "@/lib/config/contactItem";
 import { IconContactItem } from "../shared/iconContactItem";
-import { LogoContactItem } from "../shared/logoContactItem";
+import { ImageContactItem } from "../shared/imageContactItem";
 
 export default function ContactsBar(contacts: SiteContactItem[]) {
 
@@ -45,13 +45,13 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
             </div>
             <div id="social-media" className="flex gap-1 max-h-10">
                 {facebook && facebook.length > 0 && (
-                    <LogoContactItem url={facebook} type="Facebook" logoSrc="facebook-white.png"></LogoContactItem>
+                    <ImageContactItem url={facebook} type="Facebook" logoSrc="facebook-white.png"></ImageContactItem>
                 )}
                 {youtube && youtube.length > 0 && (
-                    <LogoContactItem url={youtube} type="Youtube" logoSrc="youtube.png"></LogoContactItem>
+                    <ImageContactItem url={youtube} type="Youtube" logoSrc="youtube.png"></ImageContactItem>
                 )}
                 {instagram && instagram.length > 0 && (
-                    <LogoContactItem url={instagram} type="Instagram" logoSrc="instagram-white.png"></LogoContactItem>
+                    <ImageContactItem url={instagram} type="Instagram" logoSrc="instagram-white.png"></ImageContactItem>
                 )}
             </div>
         </div >
