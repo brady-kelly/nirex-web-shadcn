@@ -6,7 +6,6 @@ import * as util from "node:util";
 export default async function ProductEditPage({ params }: { params: Promise<{ productId: string }> }) {
 
     const resolved = await params;
-    console.log(util.inspect(resolved, { depth: null }));
     const productId = resolved.productId;
     const categories = await getAllCategories();
     const id: number = Number(productId);

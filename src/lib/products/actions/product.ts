@@ -17,10 +17,10 @@ export async function getAllCategoriesWithProducts() {
   });
 }
 
-export async function getCategoryInfo(catid: number) {
+export async function getCategoryInfo(catId: number) {
   return prisma.category.findUnique({
     where: {
-      id: catid,
+      id: catId,
     },
     select: {
       name: true,
