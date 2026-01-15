@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --brand-primary: #3c5387;
+  --color-primary: var(--brand-primary);
+  --brand-secondary: #dd3541;
+  --color-secondary: var(--brand-secondary);
+  --brand-surface: #f1efe9;
+  --color-surface: var(--brand-surface);
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -30,9 +39,9 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
+  /* --color-secondary: var(--secondary); */
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
+  /* --color-primary: var(--primary); */
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);

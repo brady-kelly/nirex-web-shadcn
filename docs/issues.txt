@@ -5,3 +5,5 @@
 - Catch errors on api.auth calls
 - Product card must be clickable.
 - Move auth to proxy.
+- Dynamic set of -brand css vars.
+- Shared root layout.

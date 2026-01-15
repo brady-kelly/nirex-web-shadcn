@@ -4,7 +4,8 @@
 import { loginEmail } from '@/lib/auth/actions/email/login';
 import { useActionState } from 'react';
 import { Button } from '../ui/button';
-import { Link } from 'lucide-react';
+import Link from 'next/link';
+import { NavLink } from '../shared/navLink';
 
 const initialState = {
     message: "",
@@ -31,7 +32,7 @@ export default function LoginForm() {
             </div>
 
             <Button type="submit" disabled={pending}>Log in</Button>
-            <p>Don't have an account? <Link href="/signup">Sign up</Link></p>
+            <p>Don't have an account? <NavLink url="/signup" text="Sign Up" /> </p>
         </form>
     );
 }

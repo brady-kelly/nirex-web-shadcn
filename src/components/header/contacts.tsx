@@ -31,7 +31,7 @@ export default function ContactsBar(contacts: SiteContactItem[]) {
     const instagram = getContactValue("instagram");
 
     return (
-        <div className="navbar w-full flex justify-between overflow-hidden bg-[#3C5387] text-white">
+        <div className="navbar w-full flex justify-between overflow-hidden bg-primary text-white">
             <div id="office-comms" className="flex gap-1.5">
                 {phone && phone.length > 0 &&
                     <IconContactItem content={phone} type="phone"><Smartphone /></IconContactItem>

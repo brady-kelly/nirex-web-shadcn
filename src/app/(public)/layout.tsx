@@ -36,7 +36,7 @@ export default async function RootLayout({
   return (
     <html lang="en" >
       <body
-        className={`bg-white dark:bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`bg-surface dark:bg-primary text-black dark:text-surface ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ContactsBar {...contacts} />
         <SiteHeader {...menuProps} />
