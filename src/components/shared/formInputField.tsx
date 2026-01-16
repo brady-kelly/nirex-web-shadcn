@@ -18,10 +18,12 @@ export interface FormInputProps {
 }
 
 function getFormData(state: any, fieldName: string) {
-    return {
+    const basics = {
         value: state.values?.[fieldName],
         errors: state.errors?.[fieldName] as string[] | undefined
     };
+
+    return basics;
 }
 
 export function FormInputField({ name, value, label, type, placeHolder, required, disabled, autoComplete, formState }: FormInputProps) {
@@ -32,8 +34,12 @@ export function FormInputField({ name, value, label, type, placeHolder, required
         label: label || camelToTitleCase(name),
         placeHolder: placeHolder || label || name,
         val: form.value ?? value ?? "",
-        invalid: !!form.errors?.length
+        invalid: !!form.errors?.length,
+        formErr: ""
     };
+    if (form.errors) {
+        sp.formErr = form.errors[0]
+    }
     return (
         <div>
             <Field data-invalid={sp.invalid} orientation="horizontal" className="grid grid-cols-[120px_450px] gap-4">
@@ -53,7 +59,7 @@ export function FormInputField({ name, value, label, type, placeHolder, required
                         autoComplete={autoComplete}
                     />
                     {sp.invalid && (
-                        <FieldError>{formState.errors.name[0]}</FieldError>
+                        <FieldError>{sp.formErr}</FieldError>
                     )}
                 </FieldContent>
             </Field>
