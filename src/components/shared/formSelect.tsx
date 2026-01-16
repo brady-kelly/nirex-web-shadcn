@@ -2,6 +2,7 @@
 import { type FormSelectItem, getSafeInputProps } from "@/lib/formUtils";
 import { Field, FieldContent, FieldLabel } from "../ui/field";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import * as util from "node:util";
 
 export interface FormSelectProps {
     name: string;
@@ -14,14 +15,15 @@ export interface FormSelectProps {
 
 export function FormSelect({ name, items, value, label, placeHolder, formState }: FormSelectProps) {
     const sp = getSafeInputProps(name, undefined, label, placeHolder, value, formState, items);
+    console.log(util.inspect(sp, { depth: null }));
     return (
         <Field data-invalid={sp.invalid} orientation="horizontal" className="grid grid-cols-[120px_450px] gap-4">
             <FieldContent className="pt-1.5">
                 <FieldLabel htmlFor={sp.id}>{sp.label}</FieldLabel>
             </FieldContent>
             <FieldContent>
-                <Select value={sp.val}>
-                    <SelectTrigger className="w-45">
+                <Select name={name} defaultValue={sp.val}>
+                    <SelectTrigger className="w-full">
                         <SelectValue placeholder={sp.placeHolder} />
                     </SelectTrigger>
                     <SelectContent>

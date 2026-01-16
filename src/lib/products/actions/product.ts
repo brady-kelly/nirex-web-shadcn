@@ -38,9 +38,12 @@ export async function updateProduct(
     formData
   ) as unknown as EditProductFormState["values"];
 
+  const cid = formData.get("categoryId");
+  console.log(util.inspect(cid, { depth: null }));
+
   if (!result.success) {
     const errs = z.flattenError(result.error).fieldErrors;
-    console.log(util.inspect(errs, { depth: null }));
+    //console.log(util.inspect(errs, { depth: null }));
     return {
       values: values,
       success: false,

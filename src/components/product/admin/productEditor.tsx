@@ -74,7 +74,7 @@ export function ProductEditor({ id, categoryId, name, variant, desc, workingSize
                 <FieldGroup>
                     <FieldSet>
                         <FieldLegend>Category</FieldLegend>
-                        <FormSelect name="categoryId" formState={formState} items={cats} />
+                        <FormSelect name="categoryId" label="Category" formState={formState} items={cats} />
                     </FieldSet>
                     <FieldSeparator className="my-2" />
                 </FieldGroup>
