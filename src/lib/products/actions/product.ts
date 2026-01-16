@@ -8,6 +8,7 @@ import {
   editproductSchema,
 } from "../schemas/product";
 import z from "zod";
+import * as util from "node:util";
 
 export async function getProductsForCategory(categoryId: number) {
   return prisma.product.findMany({
@@ -39,6 +40,7 @@ export async function updateProduct(
 
   if (!result.success) {
     const errs = z.flattenError(result.error).fieldErrors;
+    console.log(util.inspect(errs, { depth: null }));
     return {
       values: values,
       success: false,

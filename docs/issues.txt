@@ -8,4 +8,4 @@
 - In login, redirect to home if already logged in
 - In admin, redirect to login after logout.
 - All forms standard
-- Pass formState as generic or base class to FormInputField to get `errors` by field name.
+- More generic formselect, without children.

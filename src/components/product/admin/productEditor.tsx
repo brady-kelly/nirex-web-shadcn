@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 import type { EditProductFormState } from "@/lib/products/schemas/product";
 import { FieldGroup, FieldLegend, FieldSeparator, FieldSet } from "@/components/ui/field";
+import { FormSelect } from "../../shared/formSelect";
+import { CategorySelect } from "@/components/product/categorySelect";
 
 export interface ProductEditorProps {
     id: number,
@@ -46,6 +48,7 @@ export function ProductEditor({ id, categoryId, name, variant, desc, workingSize
         },
         success: false,
     }
+    const cats = categories.map((c) => { return { value: c.id.toString(), text: c.name } });
     const [formState, formAction, pending] = useActionState<EditProductFormState, FormData>
         (updateProduct, initialState);
     useEffect(() => {
@@ -65,6 +68,13 @@ export function ProductEditor({ id, categoryId, name, variant, desc, workingSize
                         <FormInputField name="name" required formState={formState} disabled={pending} />
                         <FormInputField name="variant" formState={formState} disabled={pending} />
                         <FormInputField name="desc" label="Description" formState={formState} disabled={pending} />
+                    </FieldSet>
+                    <FieldSeparator className="my-2" />
+                </FieldGroup>
+                <FieldGroup>
+                    <FieldSet>
+                        <FieldLegend>Category</FieldLegend>
+                        <FormSelect name="categoryId" formState={formState} items={cats} />
                     </FieldSet>
                     <FieldSeparator className="my-2" />
                 </FieldGroup>

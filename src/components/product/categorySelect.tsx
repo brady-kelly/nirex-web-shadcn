@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
 import React from "react";
 import type { Category } from "../../../generated/prisma/client";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
@@ -7,8 +8,8 @@ export interface CategorySelectProps {
     label?: string;
     value?: number;
     categories: Category[];
-    onChange: (date?: Date) => void;
-    onBlur: () => void;
+    onChange?: (date?: Date) => void;
+    onBlur?: () => void;
 }
 
 export const CategorySelect: React.FC<CategorySelectProps> = ({ label, value, categories }) => {
@@ -20,8 +21,8 @@ export const CategorySelect: React.FC<CategorySelectProps> = ({ label, value, ca
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>{label || "Category"}</SelectLabel>
-                    {categories.map((item) =>
-                        <SelectItem key={item.id} value={item.id.toString()}>{item.name}</SelectItem>
+                    {categories.map((item, index) =>
+                        <SelectItem key={index} value={item.id.toString()}>{item.name}</SelectItem>
                     )}
                 </SelectGroup>
             </SelectContent>
