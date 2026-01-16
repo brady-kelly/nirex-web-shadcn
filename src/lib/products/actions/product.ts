@@ -46,7 +46,23 @@ export async function updateProduct(
     };
   }
 
-  //return prisma.product.update({});
+  await prisma.product.update({
+    where: {
+      id: result.data.id,
+    },
+    data: {
+      name: result.data.name,
+      categoryId: result.data.categoryId,
+      variant: result.data.variant,
+      desc: result.data.desc,
+      workingSize: result.data.workingSize,
+      packageSize: result.data.packageSize,
+      volume: result.data.volume,
+      packageWeight: result.data.packageWeight,
+      imageFile: result.data.imageFile,
+      localPrice: result.data.localPrice,
+    },
+  });
 
   return {
     errors: undefined,

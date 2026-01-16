@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 import type { EditProductFormState } from "@/lib/products/schemas/product";
-import { FieldGroup } from "@/components/ui/field";
+import { FieldGroup, FieldLegend, FieldSeparator, FieldSet } from "@/components/ui/field";
 
 export interface ProductEditorProps {
     id: number,
@@ -59,24 +59,33 @@ export function ProductEditor({ id, categoryId, name, variant, desc, workingSize
             <h1 className="pb-3">Edit Product: {name}</h1>
             <Form action={formAction} id={formId}>
                 <FieldGroup>
-                    <Input id="id" name="id" type="hidden" defaultValue={formState.values?.id} readOnly></Input>
-                    <h2>Product Properties</h2>
-                    <FormInputField name="name" required formState={formState} disabled={pending} />
-                    <FormInputField name="variant" formState={formState} disabled={pending} />
-                    <FormInputField name="desc" label="Description" formState={formState} disabled={pending} />
+                    <FieldSet>
+                        <FieldLegend>Product Properties</FieldLegend>
+                        <Input id="id" name="id" type="hidden" defaultValue={formState.values?.id} readOnly></Input>
+                        <FormInputField name="name" required formState={formState} disabled={pending} />
+                        <FormInputField name="variant" formState={formState} disabled={pending} />
+                        <FormInputField name="desc" label="Description" formState={formState} disabled={pending} />
+                    </FieldSet>
+                    <FieldSeparator className="my-2" />
                 </FieldGroup>
                 <FieldGroup>
-                    <h2>Product Attributes</h2>
-                    <FormInputField name="workingSize" formState={formState} disabled={pending} />
-                    <FormInputField name="packageSize" formState={formState} disabled={pending} />
-                    <FormInputField name="volume" formState={formState} disabled={pending} />
-                    <FormInputField name="packageWeight" formState={formState} disabled={pending} />
+                    <FieldSet>
+                        <FieldLegend>Product Attributes</FieldLegend>
+                        <FormInputField name="workingSize" formState={formState} disabled={pending} />
+                        <FormInputField name="packageSize" formState={formState} disabled={pending} />
+                        <FormInputField name="volume" formState={formState} disabled={pending} />
+                        <FormInputField name="packageWeight" formState={formState} disabled={pending} />
+                    </FieldSet>
+                    <FieldSeparator className="my-2" />
                 </FieldGroup>
                 <FieldGroup>
-                    <h2>Pricing</h2>
-                    <FormInputField name="localPrice" formState={formState} disabled={pending} />
+                    <FieldSet>
+                        <FieldLegend>Pricing</FieldLegend>
+                        <FormInputField name="localPrice" formState={formState} disabled={pending} />
+                    </FieldSet>
+                    <FieldSeparator className="my-2" />
                 </FieldGroup>
-                <Button className="mt-4" type="submit" disabled={pending}>Save</Button>
+                <Button type="submit" disabled={pending}>Save</Button>
             </Form>
         </div>
     );
