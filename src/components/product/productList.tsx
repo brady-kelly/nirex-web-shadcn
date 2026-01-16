@@ -16,14 +16,14 @@ import {
     TableRow,
 } from "@/components/ui/table"
 
-export interface CategoryListProps<TData, TValue> {
+export interface ProductListProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
     showEdit?: boolean;
 }
 
-export function CategoryList<TData, TValue>
-    ({ columns, data, showEdit }: CategoryListProps<TData, TValue>) {
+export function ProductList<TData, TValue>
+    ({ columns, data, showEdit }: ProductListProps<TData, TValue>) {
     const table = useReactTable({
         data,
         columns,

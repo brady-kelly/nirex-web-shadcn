@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 
 export default async function CategoryEditPage({ params }: { params: Promise<{ categoryId: string }> }) {
     const resolved = await params;
-    //console.log(util.inspect(resolved, { depth: null }));
     const catId = resolved.categoryId;
     const id: number = Number(catId);
     const cat = await getCategoryInfo(id);
