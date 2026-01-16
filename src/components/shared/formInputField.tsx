@@ -43,7 +43,7 @@ export function FormInputField({ name, value, label, type, placeHolder, required
     return (
         <div>
             <Field data-invalid={sp.invalid} orientation="horizontal" className="grid grid-cols-[120px_450px] gap-4">
-                <FieldContent>
+                <FieldContent className="pt-1.5">
                     <FieldLabel htmlFor={sp.id}>{sp.label}</FieldLabel>
                 </FieldContent>
                 <FieldContent>
