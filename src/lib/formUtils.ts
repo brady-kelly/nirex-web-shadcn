@@ -20,7 +20,7 @@ export function getSafeInputProps(
   placeHolder?: string,
   value?: string,
   formState?: any,
-  items?: FormSelectItem[]
+  items?: FormSelectItem[],
 ) {
   const form = getFormState(formState, name);
   const ev = form.value ?? value ?? "";
