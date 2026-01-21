@@ -13,6 +13,11 @@ enum Role {
   ADMIN
 }
 
+model ShopifyAccessToken {
+  
+
+}
+
 model SiteConfig {
   id                Int     @id @default(autoincrement())
   name              String  @unique @default("current")
